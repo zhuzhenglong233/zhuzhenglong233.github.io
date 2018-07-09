@@ -194,8 +194,10 @@
 </head>
 
     
+        <body class="home-body">
     
-<header class="header">
+    
+<header class="header index-header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
@@ -213,21 +215,34 @@
 
 
 
+height:50vh;
+
 >
     
     <!-- 主页  -->
+    
+    
+    <!-- 文章页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/index-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
+            fi3ework's Studio.
+            <!-- 文章页  -->
+            
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
+            
+            
+                it's better to burn out than to fade away
+            
+            <!-- 文章页  -->
             
         </p>
         <!-- 文章页meta -->
@@ -339,28 +354,31 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2017/06/18/Hibernate主键自增长increment/" >
+        <a class="abstract-title" href = "/2016/09/18/Markdown-Syntax-API/" >
             
-                <span>Hibernate主键自增长increment</span>
+                <span>Markdown 语法 API</span>
         </a>
         <div class="abstract-content">
-            increment由Hibernate从数据库中取出主键的最大值（每个session只取1次），以该值为基础，每次增量为1，在内存中生成主键，不依赖于底层的数据库，因此可以跨数据库。
-123&lt;id name="id" column="id"&gt;    &lt;generator class="increment" /&gt;&lt;/id&gt;
-Hibernate调用org.hibernate.id.IncrementGenerator类里面的generate()方法，使用select max(idColumnName) from tableName语句获取主键最大值。
-以上...
+            Markdown：语法概观
+
+哲学
+
+Markdown旨在尽可能易于阅读和易于编写。
+但是，可读性强调一切。Markdown格式的文档应该以纯文本的形式发布，而不会看起来像标签或格式化指令。尽管Markdown的语法受到了几种现有的文本到HTML过滤器的影响，包括 Setext， atx， Textile， reStructuredText，Grutatext， 和 EtText ，Markdown语法的最大灵感来源是纯文本电子邮件的格式。
+为此，Markdown的语法完全由标点字符组成，标点字符经过仔细选择以便看起来像他们的意思。 例如，一个词的星号实际上看起来像 *强调*。 Mark...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2017/06/18</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2016/09/18</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Hibernate">Hibernate</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "API">API</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "increment">increment</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Markdown">Markdown</a>
     
 </div>
             
@@ -369,8 +387,101 @@ Hibernate调用org.hibernate.id.IncrementGenerator类里面的generate()方法�
     
     <!-- paginator  -->
     
+    <nav class="page-nav">
+        <a class="extend prev" rel="prev" href="/page/2/">&#60; PREV</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    </nav>
+    
 </main>
             <!-- profile -->
+            
+            <div class="profile">
+    <img class="profile-avatar" src= /avatar/Misaka.jpg >
+    <div class="profile-name">fi3ework</div>
+    
+    <div class="profile-signature">
+        witness me
+    </div>
+    
+    
+    <div class="profile-social">
+        
+    
+        
+            
+                <a href="mailto:12345@qq.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/fi3ework" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                  
+                  <img class="profile-qr" src="/assets/example_qr.png" />
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    
+        <div class="friends">
+            <div>FRIENDS</div>
+            
+                
+                    <span>
+                        <a href= //www.baidu.com target="_black">friendA</a>
+                    </span>
+                
+            
+                
+                    <span>
+                        <a href= //www.google.com target="_black">friendB</a>
+                    </span>
+                
+            
+                
+            
+        </div>
+    
+    
+        <div class="about-me">
+            <a href = "/about" >ABOUT ME</a>
+        </div>
+    
+</div>
             
         </div>
         <footer class="footer footer-unloaded">
