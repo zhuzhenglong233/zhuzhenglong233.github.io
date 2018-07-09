@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
+
+<head>
+  <title>Hibernate配置文件hibernate.cfg.xml和.hbm.xml的详细解释 | Hexo</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Hexo">
+    <meta name="author" content="John Doe">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  <link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="atom.xml">
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            <li>
+                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                        <li><a href="/" target="_BLANK" class="animsition-link">AAA</a></li>
+                    
+                        <li><a href="/atom.xml" target="_BLANK" class="animsition-link">BBB</a></li>
+                    
+                </ul>
+            </li>
+            
+            
+        	<li>
+        		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
+            	<ul class="sb-submenu">
+				  	
+				    <li><a href="/categories/API/" class="animsition-link">API<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Struts2/idea/Interceptor/AbstractInterceptor/" class="animsition-link">AbstractInterceptor<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Struts2/Action/" class="animsition-link">Action<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Hibernate/Session/Filter/" class="animsition-link">Filter<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Hexo/" class="animsition-link">Hexo<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/Hibernate/" class="animsition-link">Hibernate<small>(7)</small></a></li>
+				    
+				    <li><a href="/categories/Struts2/idea/Interceptor/" class="animsition-link">Interceptor<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Java/" class="animsition-link">Java<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/JavaScript/" class="animsition-link">JavaScript<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/API/Markdown/" class="animsition-link">Markdown<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/MyBatis/" class="animsition-link">MyBatis<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/MyBatis/MySQL/" class="animsition-link">MySQL<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Hexo/Next/" class="animsition-link">Next<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Struts2/OGNL/" class="animsition-link">OGNL<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Hibernate/Session/" class="animsition-link">Session<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Struts2/" class="animsition-link">Struts2<small>(4)</small></a></li>
+				    
+				    <li><a href="/categories/MyBatis/XML/" class="animsition-link">XML<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Hibernate/XML/" class="animsition-link">XML<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Java/extends/" class="animsition-link">extends<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/idea/" class="animsition-link">idea<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Struts2/idea/" class="animsition-link">idea<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/Hibernate/increment/" class="animsition-link">increment<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/idea/web-xml/" class="animsition-link">web.xml<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Hibernate/XML/主键/" class="animsition-link">主键<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Hibernate/关系映射/" class="animsition-link">关系映射<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/MyBatis/XML/映射配置/动态SQL/" class="animsition-link">动态SQL<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/MyBatis/XML/映射配置/" class="animsition-link">映射配置<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Hibernate/注解/" class="animsition-link">注解<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Struts2/OGNL/自定义转换器/" class="animsition-link">自定义转换器<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Java/集合/" class="animsition-link">集合<small>(1)</small></a></li>
+				    
+				</ul>
+        	</li>
+			
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a href="http://go.kieran.top/" class="animsition-link">Kieran</a></li>
+                    
+                    <li><a href="http://domain.com/" class="animsition-link">Name</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            
+            <li><a href="javascript:;" class="popup-trigger" title="Search"><span class="search-icon"></span>Search</a></li>
+            
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">Hexo</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2017-05-31T08:49:50.000Z" itemprop="datePublished">
+          2017-05-31
+      </time>
+    
+    
+    | 
+    <a href='/tags/Hibernate/'>Hibernate</a>,
+    
+    <a href='/tags/配置/'>配置</a>
+    
+    
+</span>
+                <h1>Hibernate配置文件hibernate.cfg.xml和.hbm.xml的详细解释</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<h1 id="什么是Hibernate"><a href="#什么是Hibernate" class="headerlink" title="什么是Hibernate"></a>什么是Hibernate</h1><p>Hibernate是一个开放源代码的对象关系映射框架，它对JDBC进行了非常轻量级的对象封装，它将POJO与数据库表建立映射关系，是一个全自动的orm框架，hibernate可以自动生成SQL语句，自动执行，使得Java程序员可以随心所欲的使用对象编程思维来操纵数据库。 Hibernate可以应用在任何使用JDBC的场合，既可以在Java的客户端程序使用，也可以在Servlet/JSP的Web应用中使用，最具革命意义的是，Hibernate可以在应用EJB的J2EE架构中取代CMP，完成数据持久化的重任。</p>
+<h1 id="Hibernate配置文件hibernate-cfg-xml和-hbm-xml的详细解释"><a href="#Hibernate配置文件hibernate-cfg-xml和-hbm-xml的详细解释" class="headerlink" title="Hibernate配置文件hibernate.cfg.xml和.hbm.xml的详细解释"></a>Hibernate配置文件hibernate.cfg.xml和.hbm.xml的详细解释</h1><p>Hibernate 中有两个常见的配置文件 <code>hibernate.cfg.xml</code> 和 <code>XXX.hbm.xml</code></p>
+<p>其中 <code>Maven</code> 项目对象模型的 <code>pom.xml</code> 可以去 <a href="https://mvnrepository.com/" target="_blank" rel="noopener">Maven知识库</a> 得到对应的 <code>dependency</code> 部分</p>
+<p>如需手动导入文件，先下载文件。并用 <code>mvn</code> 执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn install:install-file -Dfile=下载文件所在路径 -DgroupId=dependency配置的groupId部分 -DartifactId=dependency配置的artifactId部分 -Dversion=dependency配置的版本 -Dpackaging=属于什么文件</span><br></pre></td></tr></table></figure>
+<p>例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn install:install-file -Dfile=c:\ojdbc6.jar -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=11.2.0.1.0 -Dpackaging=jar</span><br></pre></td></tr></table></figure>
+<h2 id="hibernate-cfg-xml"><a href="#hibernate-cfg-xml" class="headerlink" title="hibernate.cfg.xml"></a>hibernate.cfg.xml</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--标准的XML文件的起始行，version='1.0'表明XML的版本，encoding='gb2312'表明XML文件的编码方式--&gt;</span>     </span><br><span class="line">  &lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span><br><span class="line"><span class="comment">&lt;!--表明解析本XML文件的DTD文档位置，DTD是Document Type Definition 的缩写,即文档类型的定义,XML解析器使用DTD文档来检查XML文件的合法性。hibernate.sourceforge.net/hibernate-configuration-3.0dtd可以在Hibernate3.1.3软件包中的src\org\hibernate目录中找到此文件--&gt;</span>     </span><br><span class="line"><span class="meta">&lt;!DOCTYPE hibernate-configuration PUBLIC     </span></span><br><span class="line"><span class="meta">"-//Hibernate/Hibernate Configuration DTD 3.0//EN"     </span></span><br><span class="line"><span class="meta">"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd"&gt;</span>     </span><br><span class="line"><span class="comment">&lt;!--声明Hibernate配置文件的开始--&gt;</span>          </span><br><span class="line"><span class="tag">&lt;<span class="name">hibernate-configuration</span>&gt;</span>     </span><br><span class="line">    <span class="comment">&lt;!--表明以下的配置是针对session-factory配置的，SessionFactory是Hibernate中的一个类，这个类主要负责保存HIbernate的配置信息，以及对Session的操作--&gt;</span>     </span><br><span class="line">    <span class="tag">&lt;<span class="name">session-factory</span>&gt;</span>        </span><br><span class="line">        <span class="comment">&lt;!--配置数据库的驱动程序，Hibernate在连接数据库时，需要用到数据库的驱动程序--&gt;</span>     </span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hibernate.connection.driver_class"</span>&gt;</span>oracle.jdbc.driver.OracleDriver <span class="tag">&lt;/<span class="name">property</span>&gt;</span>     </span><br><span class="line">        <span class="comment">&lt;!--设置数据库的连接url:jdbc:mysql://localhost/hibernate,其中localhost表示mysql服务器名称，此处为本机，    hibernate是数据库名--&gt;</span>      </span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hibernate.connection.url"</span>&gt;</span>jdbc:mysql://localhost/hibernate<span class="tag">&lt;/<span class="name">property</span>&gt;</span>  </span><br><span class="line">        <span class="comment">&lt;!--连接数据库是用户名--&gt;</span>     </span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hibernate.connection.username"</span>&gt;</span>root <span class="tag">&lt;/<span class="name">property</span>&gt;</span>     </span><br><span class="line">        <span class="comment">&lt;!--连接数据库是密码--&gt;</span>     </span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hibernate.connection.password"</span>&gt;</span>123456 <span class="tag">&lt;/<span class="name">property</span>&gt;</span>            </span><br><span class="line">        <span class="comment">&lt;!--数据库连接池的大小--&gt;</span>     </span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hibernate.connection.pool.size"</span>&gt;</span>20 <span class="tag">&lt;/<span class="name">property</span>&gt;</span>            </span><br><span class="line">        <span class="comment">&lt;!--是否在后台显示Hibernate用到的SQL语句，开发时设置为true，便于差错，程序运行时可以在Eclipse的控制台显示Hibernate的执行Sql语句。项目部署后可以设置为false，提高运行效率--&gt;</span>     </span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hibernate.show_sql"</span>&gt;</span>true <span class="tag">&lt;/<span class="name">property</span>&gt;</span>     </span><br><span class="line">        <span class="comment">&lt;!--jdbc.fetch_size是指Hibernate每次从数据库中取出并放到JDBC的Statement中的记录条数。Fetch Size设的越大，读数据库的次数越少，速度越快，Fetch Size越小，读数据库的次数越多，速度越慢--&gt;</span>     </span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"jdbc.fetch_size"</span>&gt;</span>50 <span class="tag">&lt;/<span class="name">property</span>&gt;</span>     </span><br><span class="line">        <span class="comment">&lt;!--jdbc.batch_size是指Hibernate批量插入,删除和更新时每次操作的记录数。Batch Size越大，批量操作的向数据库发送Sql的次数越少，速度就越快，同样耗用内存就越大--&gt;</span>     </span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"jdbc.batch_size"</span>&gt;</span>23 <span class="tag">&lt;/<span class="name">property</span>&gt;</span>     </span><br><span class="line">        <span class="comment">&lt;!--jdbc.use_scrollable_resultset是否允许Hibernate用JDBC的可滚动的结果集。对分页的结果集。对分页时的设置非常有帮助--&gt;</span>     </span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"jdbc.use_scrollable_resultset"</span>&gt;</span>false <span class="tag">&lt;/<span class="name">property</span>&gt;</span>     </span><br><span class="line">        <span class="comment">&lt;!--connection.useUnicode连接数据库时是否使用Unicode编码--&gt;</span>     </span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"Connection.useUnicode"</span>&gt;</span>true <span class="tag">&lt;/<span class="name">property</span>&gt;</span>     </span><br><span class="line">        <span class="comment">&lt;!--connection.characterEncoding连接数据库时数据的传输字符集编码方式，最好设置为gbk，用gb2312有的字符不全--&gt;</span>     </span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"connection.characterEncoding"</span>&gt;</span>gbk <span class="tag">&lt;/<span class="name">property</span>&gt;</span>          </span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!--hibernate.dialect 只是Hibernate使用的数据库方言,就是要用Hibernate连接那种类型的数据库服务器。--&gt;</span>     </span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hibernate.dialect"</span>&gt;</span>org.hibernate.dialect.MySQLDialect <span class="tag">&lt;/<span class="name">property</span>&gt;</span>     </span><br><span class="line">        <span class="comment">&lt;!--指定映射文件为“hibernate/ch1/UserInfo.hbm.xml”--&gt;</span>            </span><br><span class="line">        <span class="tag">&lt;<span class="name">mapping</span> <span class="attr">resource</span>=<span class="string">"org/mxg/UserInfo.hbm.xml"</span>&gt;</span>     </span><br><span class="line">    <span class="tag">&lt;/<span class="name">session-factory</span>&gt;</span>     </span><br><span class="line"><span class="tag">&lt;/<span class="name">hibernate-configuration</span>&gt;</span>        </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"dataSource"</span>      </span></span><br><span class="line"><span class="tag"><span class="attr">class</span>=<span class="string">"org.apache.commons.dbcp.BasicDataSource"</span>      </span></span><br><span class="line"><span class="tag"><span class="attr">destroy-method</span>=<span class="string">"close"</span>&gt;</span>      </span><br><span class="line">    //连接驱动        </span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"driverClassName"</span> <span class="attr">value</span>=<span class="string">"$&#123;jdbc.driverClassName&#125;"</span> /&gt;</span>      </span><br><span class="line">    //连接url,        </span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"url"</span> <span class="attr">value</span>=<span class="string">"$&#123;jdbc.url&#125;"</span> /&gt;</span>      </span><br><span class="line">    //连接用户名        </span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"$&#123;jdbc.username&#125;"</span> /&gt;</span>      </span><br><span class="line">    //连接密码        </span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"$&#123;jdbc.password&#125;"</span> /&gt;</span>      </span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span>      </span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"hbSessionFactory"</span>      </span></span><br><span class="line"><span class="tag"><span class="attr">class</span>=<span class="string">"org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean"</span>&gt;</span>      </span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dataSource"</span> <span class="attr">ref</span>=<span class="string">"dataSource"</span> /&gt;</span>      </span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"configLocation"</span>&gt;</span>      </span><br><span class="line">        //hibernate配置文件位置        </span><br><span class="line">        <span class="tag">&lt;<span class="name">value</span>&gt;</span>WEB-INF/hibernate.cfg.xml <span class="tag">&lt;/<span class="name">value</span>&gt;</span>      </span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span>      </span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"configurationClass"</span>      </span></span><br><span class="line"><span class="tag">    <span class="attr">value</span>=<span class="string">"org.hibernate.cfg.AnnotationConfiguration"</span> /&gt;</span>      </span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hibernateProperties"</span>&gt;</span>      </span><br><span class="line">        <span class="tag">&lt;<span class="name">props</span>&gt;</span>      </span><br><span class="line">            //针对oracle数据库的方言,特定的关系数据库生成优化的SQL        </span><br><span class="line">            <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"hibernate.dialect"</span>&gt;</span>      </span><br><span class="line">            org.hibernate.dialect.OracleDialect        </span><br><span class="line">            <span class="tag">&lt;/<span class="name">prop</span>&gt;</span>      </span><br><span class="line">            //选择HQL解析器的实现        </span><br><span class="line">            <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"hibernate.query.factory_class"</span>&gt;</span>      </span><br><span class="line">            org.hibernate.hql.ast.ASTQueryTranslatorFactory        </span><br><span class="line">            <span class="tag">&lt;/<span class="name">prop</span>&gt;</span>      </span><br><span class="line">            //是否在控制台打印sql语句        </span><br><span class="line">            <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"hibernate.show_sql"</span>&gt;</span>true <span class="tag">&lt;/<span class="name">prop</span>&gt;</span>      </span><br><span class="line">            //在Hibernate系统参数中hibernate.use_outer_join被打开的情况下,该参数用来允许使用outer join来载入此集合的数据。        </span><br><span class="line">            <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"hibernate.use_outer_join"</span>&gt;</span>true <span class="tag">&lt;/<span class="name">prop</span>&gt;</span>      </span><br><span class="line">            //默认打开，启用cglib反射优化。cglib是用来在Hibernate中动态生成PO字节码的，打开优化可以加快字节码构造的速度        </span><br><span class="line">            <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"hibernate.cglib.use_reflection_optimizer"</span>&gt;</span>true <span class="tag">&lt;/<span class="name">prop</span>&gt;</span>      </span><br><span class="line">            //输出格式化后的sql,更方便查看        </span><br><span class="line">            <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"hibernate.format_sql"</span>&gt;</span>true <span class="tag">&lt;/<span class="name">prop</span>&gt;</span>      </span><br><span class="line">            //“useUnicode”和“characterEncoding”决定了它是否在客户端和服务器端传输过程中进行Encode，以及如何进行Encode        </span><br><span class="line">            <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"hibernate.connection.useUnicode"</span>&gt;</span>true <span class="tag">&lt;/<span class="name">prop</span>&gt;</span>      </span><br><span class="line">            //允许查询缓存, 个别查询仍然需要被设置为可缓存的.        </span><br><span class="line">            <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"hibernate.cache.use_query_cache"</span>&gt;</span>false <span class="tag">&lt;/<span class="name">prop</span>&gt;</span>      </span><br><span class="line">            <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"hibernate.default_batch_fetch_size"</span>&gt;</span>16 <span class="tag">&lt;/<span class="name">prop</span>&gt;</span>      </span><br><span class="line">            //连接池的最大活动个数        </span><br><span class="line">            <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"hibernate.dbcp.maxActive"</span>&gt;</span>100 <span class="tag">&lt;/<span class="name">prop</span>&gt;</span>      </span><br><span class="line">            //当连接池中的连接已经被耗尽的时候，DBCP将怎样处理(0 = 失败,1 = 等待,2  =  增长)        </span><br><span class="line">            <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"hibernate.dbcp.whenExhaustedAction"</span>&gt;</span>1 <span class="tag">&lt;/<span class="name">prop</span>&gt;</span>      </span><br><span class="line">            //最大等待时间        </span><br><span class="line">            <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"hibernate.dbcp.maxWait"</span>&gt;</span>1200 <span class="tag">&lt;/<span class="name">prop</span>&gt;</span>      </span><br><span class="line">            //没有人用连接的时候，最大闲置的连接个数        </span><br><span class="line">            <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"hibernate.dbcp.maxIdle"</span>&gt;</span>10 <span class="tag">&lt;/<span class="name">prop</span>&gt;</span>      </span><br><span class="line">            ##以下是对prepared statement的处理，同上。        </span><br><span class="line">            <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"hibernate.dbcp.ps.maxActive"</span>&gt;</span>100 <span class="tag">&lt;/<span class="name">prop</span>&gt;</span>      </span><br><span class="line">            <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"hibernate.dbcp.ps.whenExhaustedAction"</span>&gt;</span>1 <span class="tag">&lt;/<span class="name">prop</span>&gt;</span>      </span><br><span class="line">            <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"hibernate.dbcp.ps.maxWait"</span>&gt;</span>1200 <span class="tag">&lt;/<span class="name">prop</span>&gt;</span>      </span><br><span class="line">            <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"hibernate.dbcp.ps.maxIdle"</span>&gt;</span>10 <span class="tag">&lt;/<span class="name">prop</span>&gt;</span>      </span><br><span class="line">        <span class="tag">&lt;/<span class="name">props</span>&gt;</span>      </span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span>      </span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="XXX-hbm-xml"><a href="#XXX-hbm-xml" class="headerlink" title="XXX.hbm.xml"></a>XXX.hbm.xml</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0"?&gt;    </span><br><span class="line"><span class="meta">&lt;!DOCTYPE hibernate-mapping PUBLIC     </span></span><br><span class="line"><span class="meta">    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"    </span></span><br><span class="line"><span class="meta">    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"&gt;</span>    </span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--     </span></span><br><span class="line"><span class="comment">    &lt;hibernate-mapping&gt;一般不去配置，采用默认即可。    </span></span><br><span class="line"><span class="comment">    default-cascade="none"：默认的级联风格，表与表联动。    </span></span><br><span class="line"><span class="comment">    default-lazy="true"：默认延迟加载    </span></span><br><span class="line"><span class="comment"> --&gt;</span>    </span><br><span class="line"><span class="tag">&lt;<span class="name">hibernate-mapping</span>&gt;</span>    </span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--     </span></span><br><span class="line"><span class="comment">        &lt;class&gt;：使用class元素定义一个持久化类。    </span></span><br><span class="line"><span class="comment">        name="cn.javass.user.vo.UserModel"：持久化类的java全限定名；    </span></span><br><span class="line"><span class="comment">        table="tbl_user"：对应数据库表名；    </span></span><br><span class="line"><span class="comment">        mutable="true"：默认为true，设置为false时则不可以被应用程序更新或删除；    </span></span><br><span class="line"><span class="comment">        dynamic-insert="false"：默认为false，动态修改那些有改变过的字段，而不用修改所有字段；    </span></span><br><span class="line"><span class="comment">        dynamic-update="false"：默认为false，动态插入非空值字段；    </span></span><br><span class="line"><span class="comment">        select-before-update="false"：默认为false，在修改之前先做一次查询，与用户的值进行对比，有变化都会真正更新；    </span></span><br><span class="line"><span class="comment">        optimistic-lock="version"：默认为version(检查version/timestamp字段)，取值：all(检查全部字段)、dirty(只检查修改过的字段)、    </span></span><br><span class="line"><span class="comment">                                   none(不使用乐观锁定)，此参数主要用来处理并发，每条值都有固定且唯一的版本，版本为最新时才能执行操作；    </span></span><br><span class="line"><span class="comment">     --&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">class</span> <span class="attr">name</span>=<span class="string">"cn.javass.user.vo.UserModel"</span> <span class="attr">table</span>=<span class="string">"tbl_user"</span> <span class="attr">dynamic-insert</span>=<span class="string">"true"</span> <span class="attr">dynamic-update</span>=<span class="string">"true"</span> <span class="attr">optimistic-lock</span>=<span class="string">"version"</span>&gt;</span>    </span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!--     </span></span><br><span class="line"><span class="comment">            &lt;id&gt;：定义了该属性到数据库表主键字段的映射。    </span></span><br><span class="line"><span class="comment">            name="userId"：标识属性的名字；    </span></span><br><span class="line"><span class="comment">            column="userId"：表主键字段的名字，如果不填写与name一样；    </span></span><br><span class="line"><span class="comment">         --&gt;</span>    </span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span> <span class="attr">name</span>=<span class="string">"userId"</span>&gt;</span>    </span><br><span class="line">            <span class="comment">&lt;!-- &lt;generator&gt;：指定主键由什么生成，推荐使用uuid（随机生成唯一通用的表示符，实体类的ID必须是String），  </span></span><br><span class="line"><span class="comment">                               native（让数据库自动选择用什么生成（根据底层数据库的能力选择identity，sequence或hilo中的一种）），  </span></span><br><span class="line"><span class="comment">                               assigned（指用户手工填入，默认）。 --&gt;</span>    </span><br><span class="line">            <span class="tag">&lt;<span class="name">generator</span> <span class="attr">class</span>=<span class="string">"uuid"</span>/&gt;</span>    </span><br><span class="line">        <span class="tag">&lt;/<span class="name">id</span>&gt;</span>    </span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!--     </span></span><br><span class="line"><span class="comment">            &lt;version/&gt;：使用版本控制来处理并发，要开启optimistic-lock="version"和dynamic-update="true"。    </span></span><br><span class="line"><span class="comment">            name="version"：持久化类的属性名，column="version"：指定持有版本号的字段名；    </span></span><br><span class="line"><span class="comment">         --&gt;</span>    </span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span> <span class="attr">name</span>=<span class="string">"version"</span> <span class="attr">column</span>=<span class="string">"version"</span>/&gt;</span>    </span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!--     </span></span><br><span class="line"><span class="comment">            &lt;property&gt;：为类定义一个持久化的javaBean风格的属性。    </span></span><br><span class="line"><span class="comment">            name="name"：标识属性的名字，以小写字母开头；    </span></span><br><span class="line"><span class="comment">            column="name"：表主键字段的名字，如果不填写与name一样；    </span></span><br><span class="line"><span class="comment">            update="true"/insert="true"：默认为true，表示可以被更新或插入；    </span></span><br><span class="line"><span class="comment">         --&gt;</span>    </span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"name"</span> <span class="attr">column</span>=<span class="string">"name"</span> /&gt;</span>    </span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"sex"</span> <span class="attr">column</span>=<span class="string">"sex"</span>/&gt;</span>    </span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"age"</span> <span class="attr">column</span>=<span class="string">"age"</span>/&gt;</span>    </span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!--     </span></span><br><span class="line"><span class="comment">            组件映射：把多个属性打包在一起当一个属性使用，用来把类的粒度变小。    </span></span><br><span class="line"><span class="comment">            &lt;component name="属性，这里指对象"&gt;    </span></span><br><span class="line"><span class="comment">                &lt;property name="name1"&gt;&lt;/property&gt;    </span></span><br><span class="line"><span class="comment">                &lt;property name="name2"&gt;&lt;/property&gt;    </span></span><br><span class="line"><span class="comment">            &lt;/component&gt;    </span></span><br><span class="line"><span class="comment">         --&gt;</span>    </span><br><span class="line"></span><br><span class="line">         <span class="comment">&lt;!--     </span></span><br><span class="line"><span class="comment">            &lt;join&gt;:一个对象映射多个表，该元素必须放在所有&lt;property&gt;之后。    </span></span><br><span class="line"><span class="comment">            &lt;join table="tbl_test：子表名"&gt;    </span></span><br><span class="line"><span class="comment">                &lt;key column="uuid：子表主键"&gt;&lt;/key&gt;    </span></span><br><span class="line"><span class="comment">            &lt;property name="name1：对象属性" column="name：子表字段"&gt;&lt;/property&gt;    </span></span><br><span class="line"><span class="comment">         &lt;/join&gt;    </span></span><br><span class="line"><span class="comment">          --&gt;</span>    </span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">class</span>&gt;</span>    </span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">hibernate-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    <a class="pull-left" href="/2017/06/06/idea建立WebServlet遇到的问题/" style="float: left;">
+        ← idea建立WebServlet遇到的问题
+    </a>
+    
+    
+    <a class="pull-right" href="/2017/04/05/Theme-of-personalized/">
+        Next主题个性化教程 →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By John Doe. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+      
+            <style>
+.local-search-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  background: rgba(255, 255, 255, .9);
+  color: #333;
+  z-index: 9999;
+  border-radius: 5px;
+  overflow: scroll;
+}
+#local-search-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #151515;
+  background-color: initial;
+}
+.search-result-list {
+  list-style: none;
+  padding-left: 0;
+}
+.search-result-list > li {
+  margin-top: 15px;
+  border-bottom: 1px solid #ddd;
+  transition: all ease .3s;
+}
+.search-result-list > li:hover {
+  border-bottom: 1px solid gray;
+}
+.search-result-title {
+  font-size: 16px;
+}
+.search-result {
+  line-height: 20px;
+}
+.search-keyword {
+  font-weight: normal;
+  color: #c00;
+}
+
+@media (min-width: 890px) {
+  .popup-btn-close {
+    position: absolute;
+    top: 15px;
+    left: 35px;
+    border: 1px solid #151515;
+    padding: 0px 10px;
+    border-top-left-radius: 8px;
+    cursor: pointer;
+    transition: all ease .3s;
+  }
+  .popup-btn-close:hover {
+    background: #151515;
+    opacity: .9;
+    color: #fff;
+  }
+}
+@media (max-width: 890px) {
+  .popup-btn-close {
+    font-size: 0;
+    position: fixed;
+    right: 20px;
+    bottom: 50px;
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 1px 1px 5px #888;
+    cursor: pointer;
+  }
+  .popup-btn-close::after {
+    content: '←';
+    color: #151515;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 20px;
+    width: 100%;
+    height: 100%;
+    line-height: 50px;
+    text-align: center;
+  }
+}
+</style>
+
+<div class="popup search-popup local-search-popup">
+  <span class="popup-btn-close">
+    ESC
+  </span>
+  <div class="container">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="local-search-header clearfix">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="local-search-input-wrapper">
+          <input autocomplete="off" placeholder="Search..." type="text" id="local-search-input">
+        </div>
+      </div>
+      <div id="local-search-result"></div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/ziploader.js"></script>
+
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').fadeOut(300);
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $('.popup').fadeIn(300);
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // get search zip version
+    $.get('/?t=' + (+new Date()), function(res) {
+      if (localStorage.getItem('searchVersion') !== res) {
+        localStorage.setItem('searchVersion', res);
+        initSearchJson();
+      }
+    });
+
+    function initSearchJson () {
+      initLoad(['/'], {
+        loadOptions: {
+          success: function(obj) {
+            localStorage.setItem('searchJson', obj['search.xml'])
+          },
+          error: function(e) {
+            return console.log(e)
+          }
+        },
+        returnOptions: {
+          'json': TYPE_TEXT
+        },
+        mimeOptions:{
+          'json':'application/json'
+        }
+      })
+    }
+
+
+    // search function;
+    var searchFunc = function(search_id, content_id) {
+      'use strict';
+
+      isfetched = true;
+      var datas = JSON.parse(localStorage.getItem('searchJson'));
+      console.log(search_id)
+      var input = document.getElementById(search_id);
+      var resultContent = document.getElementById(content_id);
+      var inputEventFunction = function() {
+        var searchText = input.value.trim().toLowerCase();
+        var keywords = searchText.split(/[\s\-]+/);
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        var resultItems = [];
+        if (searchText.length > 0) {
+          // perform local searching
+          datas.forEach(function(data) {
+            var isMatch = false;
+            var hitCount = 0;
+            var searchTextCount = 0;
+            var title = data.title ? data.title.trim() : '';
+            var titleInLowerCase = title.toLowerCase();
+            var content = data.content ? data.content.trim().replace(/<[^>]+>/g,"") : '';
+            var contentInLowerCase = content.toLowerCase();
+            var articleUrl = decodeURIComponent(data.url);
+            var indexOfTitle = [];
+            var indexOfContent = [];
+            // only match articles with not empty titles
+            keywords.forEach(function(keyword) {
+              function getIndexByWord(word, text, caseSensitive) {
+                var wordLen = word.length;
+                if (wordLen === 0) {
+                  return [];
+                }
+                var startPosition = 0, position = [], index = [];
+                if (!caseSensitive) {
+                  text = text.toLowerCase();
+                  word = word.toLowerCase();
+                }
+                while ((position = text.indexOf(word, startPosition)) > -1) {
+                  index.push({position: position, word: word});
+                  startPosition = position + wordLen;
+                }
+                return index;
+              }
+
+              indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+              indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+            });
+            if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+              isMatch = true;
+              hitCount = indexOfTitle.length + indexOfContent.length;
+            }
+
+            // show search results
+
+            if (isMatch) {
+              // sort index by position of keyword
+
+              [indexOfTitle, indexOfContent].forEach(function (index) {
+                index.sort(function (itemLeft, itemRight) {
+                  if (itemRight.position !== itemLeft.position) {
+                    return itemRight.position - itemLeft.position;
+                  } else {
+                    return itemLeft.word.length - itemRight.word.length;
+                  }
+                });
+              });
+
+              // merge hits into slices
+
+              function mergeIntoSlice(text, start, end, index) {
+                var item = index[index.length - 1];
+                var position = item.position;
+                var word = item.word;
+                var hits = [];
+                var searchTextCountInSlice = 0;
+                while (position + word.length <= end && index.length != 0) {
+                  if (word === searchText) {
+                    searchTextCountInSlice++;
+                  }
+                  hits.push({position: position, length: word.length});
+                  var wordEnd = position + word.length;
+
+                  // move to next position of hit
+
+                  index.pop();
+                  while (index.length != 0) {
+                    item = index[index.length - 1];
+                    position = item.position;
+                    word = item.word;
+                    if (wordEnd > position) {
+                      index.pop();
+                    } else {
+                      break;
+                    }
+                  }
+                }
+                searchTextCount += searchTextCountInSlice;
+                return {
+                  hits: hits,
+                  start: start,
+                  end: end,
+                  searchTextCount: searchTextCountInSlice
+                };
+              }
+
+              var slicesOfTitle = [];
+              if (indexOfTitle.length != 0) {
+                slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+              }
+
+              var slicesOfContent = [];
+              while (indexOfContent.length != 0) {
+                var item = indexOfContent[indexOfContent.length - 1];
+                var position = item.position;
+                var word = item.word;
+                // cut out 100 characters
+                var start = position - 20;
+                var end = position + 80;
+                if(start < 0){
+                  start = 0;
+                }
+                if (end < position + word.length) {
+                  end = position + word.length;
+                }
+                if(end > content.length){
+                  end = content.length;
+                }
+                slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+              }
+
+              // sort slices in content by search text's count and hits' count
+
+              slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                  return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                  return sliceRight.hits.length - sliceLeft.hits.length;
+                } else {
+                  return sliceLeft.start - sliceRight.start;
+                }
+              });
+
+              // select top N slices in content
+
+              var upperBound = parseInt('2');
+              if (upperBound >= 0) {
+                slicesOfContent = slicesOfContent.slice(0, upperBound);
+              }
+
+              // highlight title and content
+
+              function highlightKeyword(text, slice) {
+                var result = '';
+                var prevEnd = slice.start;
+                slice.hits.forEach(function (hit) {
+                  result += text.substring(prevEnd, hit.position);
+                  var end = hit.position + hit.length;
+                  result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                  prevEnd = end;
+                });
+                result += text.substring(prevEnd, slice.end);
+                return result;
+              }
+
+              var resultItem = '';
+
+              if (slicesOfTitle.length != 0) {
+                resultItem += "<li><a target='_blank' href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+              } else {
+                resultItem += "<li><a target='_blank' href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+              }
+
+              slicesOfContent.forEach(function (slice) {
+                resultItem += "<a target='_blank' href='" + articleUrl + "'>" +
+                  "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                  "...</p>" + "</a>";
+              });
+
+              resultItem += "</li>";
+              resultItems.push({
+                item: resultItem,
+                searchTextCount: searchTextCount,
+                hitCount: hitCount,
+                id: resultItems.length
+              });
+            }
+          })
+        };
+        if (keywords.length === 1 && keywords[0] === "") {
+          resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+        } else if (resultItems.length === 0) {
+          resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+        } else {
+          resultItems.sort(function (resultLeft, resultRight) {
+            if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+              return resultRight.searchTextCount - resultLeft.searchTextCount;
+            } else if (resultLeft.hitCount !== resultRight.hitCount) {
+              return resultRight.hitCount - resultLeft.hitCount;
+            } else {
+              return resultRight.id - resultLeft.id;
+            }
+          });
+          var searchResultList = '<ul class=\"search-result-list\">';
+          resultItems.forEach(function (result) {
+            searchResultList += result.item;
+          })
+          searchResultList += "</ul>";
+          resultContent.innerHTML = searchResultList;
+        }
+      }
+
+      if ('auto' === 'auto') {
+        input.addEventListener('input', inputEventFunction);
+      } else {
+        $('.search-icon').click(inputEventFunction);
+        input.addEventListener('keypress', function (event) {
+          if (event.keyCode === 13) {
+            inputEventFunction();
+          }
+        });
+      }
+
+      // remove loading animation
+      $('body').css('overflow', '');
+
+      proceedsearch();
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        $('.sb-close').click();
+        searchFunc('local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+      
+</body>
+</html>

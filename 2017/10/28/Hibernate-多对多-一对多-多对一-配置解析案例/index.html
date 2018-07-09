@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
+
+<head>
+  <title>Hibernate 多对多 一对多 多对一  配置解析案例 | Hexo</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Hexo">
+    <meta name="author" content="John Doe">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  <link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="atom.xml">
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            <li>
+                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                        <li><a href="/" target="_BLANK" class="animsition-link">AAA</a></li>
+                    
+                        <li><a href="/atom.xml" target="_BLANK" class="animsition-link">BBB</a></li>
+                    
+                </ul>
+            </li>
+            
+            
+        	<li>
+        		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
+            	<ul class="sb-submenu">
+				  	
+				    <li><a href="/categories/API/" class="animsition-link">API<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Struts2/idea/Interceptor/AbstractInterceptor/" class="animsition-link">AbstractInterceptor<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Struts2/Action/" class="animsition-link">Action<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Hibernate/Session/Filter/" class="animsition-link">Filter<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Hexo/" class="animsition-link">Hexo<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/Hibernate/" class="animsition-link">Hibernate<small>(7)</small></a></li>
+				    
+				    <li><a href="/categories/Struts2/idea/Interceptor/" class="animsition-link">Interceptor<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Java/" class="animsition-link">Java<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/JavaScript/" class="animsition-link">JavaScript<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/API/Markdown/" class="animsition-link">Markdown<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/MyBatis/" class="animsition-link">MyBatis<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/MyBatis/MySQL/" class="animsition-link">MySQL<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Hexo/Next/" class="animsition-link">Next<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Struts2/OGNL/" class="animsition-link">OGNL<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Hibernate/Session/" class="animsition-link">Session<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Struts2/" class="animsition-link">Struts2<small>(4)</small></a></li>
+				    
+				    <li><a href="/categories/MyBatis/XML/" class="animsition-link">XML<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Hibernate/XML/" class="animsition-link">XML<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Java/extends/" class="animsition-link">extends<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/idea/" class="animsition-link">idea<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Struts2/idea/" class="animsition-link">idea<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/Hibernate/increment/" class="animsition-link">increment<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/idea/web-xml/" class="animsition-link">web.xml<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Hibernate/XML/主键/" class="animsition-link">主键<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Hibernate/关系映射/" class="animsition-link">关系映射<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/MyBatis/XML/映射配置/动态SQL/" class="animsition-link">动态SQL<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/MyBatis/XML/映射配置/" class="animsition-link">映射配置<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Hibernate/注解/" class="animsition-link">注解<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Struts2/OGNL/自定义转换器/" class="animsition-link">自定义转换器<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Java/集合/" class="animsition-link">集合<small>(1)</small></a></li>
+				    
+				</ul>
+        	</li>
+			
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a href="http://go.kieran.top/" class="animsition-link">Kieran</a></li>
+                    
+                    <li><a href="http://domain.com/" class="animsition-link">Name</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            
+            <li><a href="javascript:;" class="popup-trigger" title="Search"><span class="search-icon"></span>Search</a></li>
+            
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">Hexo</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2017-10-28T02:52:01.000Z" itemprop="datePublished">
+          2017-10-28
+      </time>
+    
+    
+    | 
+    <a href='/tags/Hibernate/'>Hibernate</a>,
+    
+    <a href='/tags/idea/'>idea</a>,
+    
+    <a href='/tags/Oracle/'>Oracle</a>,
+    
+    <a href='/tags/多对多/'>多对多</a>,
+    
+    <a href='/tags/一对多/'>一对多</a>,
+    
+    <a href='/tags/多对一/'>多对一</a>,
+    
+    <a href='/tags/many-to-many/'>many-to-many</a>,
+    
+    <a href='/tags/many-to-one/'>many-to-one</a>,
+    
+    <a href='/tags/one-to-many/'>one-to-many</a>,
+    
+    <a href='/tags/关系映射/'>关系映射</a>
+    
+    
+</span>
+                <h1>Hibernate 多对多 一对多 多对一  配置解析案例</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<h1 id="此案例用于理解脏检查-以及Hibernate关系映射的配置"><a href="#此案例用于理解脏检查-以及Hibernate关系映射的配置" class="headerlink" title="此案例用于理解脏检查,以及Hibernate关系映射的配置"></a>此案例用于理解脏检查,以及Hibernate关系映射的配置</h1><h2 id="pom-xml"><a href="#pom-xml" class="headerlink" title="pom.xml"></a>pom.xml</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">"http://maven.apache.org/POM/4.0.0"</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>HibernateCase<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.hibernate<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hibernate-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.2.12.Final<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- https://mvnrepository.com/artifact/com.hynnet/oracle-driver-ojdbc --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.oracle<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>ojdbc6<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>12.1.0.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="数据库的关系"><a href="#数据库的关系" class="headerlink" title="数据库的关系"></a>数据库的关系</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--部门</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> depa(</span><br><span class="line">    <span class="keyword">ID</span> <span class="built_in">NUMBER</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    <span class="keyword">NAME</span> <span class="keyword">NVARCHAR2</span> (<span class="number">50</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">--职员</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> emp(</span><br><span class="line">    <span class="keyword">ID</span> <span class="built_in">NUMBER</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    <span class="keyword">NAME</span> <span class="keyword">NVARCHAR2</span> (<span class="number">50</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    depa_id <span class="built_in">NUMBER</span> <span class="keyword">NOT</span> <span class="literal">NULL</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">--职位</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> post(</span><br><span class="line">    <span class="keyword">ID</span> <span class="built_in">NUMBER</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    <span class="keyword">NAME</span> <span class="keyword">NVARCHAR2</span> (<span class="number">50</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">--职员职位</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> emp_post(</span><br><span class="line">    emp_id <span class="built_in">NUMBER</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    post_id <span class="built_in">NUMBER</span> <span class="keyword">NOT</span> <span class="literal">NULL</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p><code>emp_post</code> 职员职位表为中间表,实体类可以不存在</p>
+<h2 id="实体类"><a href="#实体类" class="headerlink" title="实体类"></a>实体类</h2><h3 id="Depa"><a href="#Depa" class="headerlink" title="Depa"></a>Depa</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.entity;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.HashSet;</span><br><span class="line"><span class="keyword">import</span> java.util.Set;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Depa</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Integer id;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> Set&lt;Emp&gt; emps = <span class="keyword">new</span> HashSet&lt;Emp&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Depa&#123;"</span> +</span><br><span class="line">                <span class="string">"id="</span> + id +</span><br><span class="line">                <span class="string">", name='"</span> + name + <span class="string">'\''</span> +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Set&lt;Emp&gt; <span class="title">getEmps</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> emps;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setEmps</span><span class="params">(Set&lt;Emp&gt; emps)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.emps = emps;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(Integer id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Emp"><a href="#Emp" class="headerlink" title="Emp"></a>Emp</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.entity;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.HashSet;</span><br><span class="line"><span class="keyword">import</span> java.util.Set;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Emp</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Integer id;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> Depa depaid;</span><br><span class="line">    <span class="keyword">private</span> Set&lt;Post&gt; posts = <span class="keyword">new</span> HashSet&lt;Post&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Emp&#123;"</span> +</span><br><span class="line">                <span class="string">"id="</span> + id +</span><br><span class="line">                <span class="string">", name='"</span> + name + <span class="string">'\''</span> +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Set&lt;Post&gt; <span class="title">getPosts</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> posts;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPosts</span><span class="params">(Set&lt;Post&gt; posts)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.posts = posts;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(Integer id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Depa <span class="title">getDepaid</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> depaid;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setDepaid</span><span class="params">(Depa depaid)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.depaid = depaid;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Post"><a href="#Post" class="headerlink" title="Post"></a>Post</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.entity;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.HashSet;</span><br><span class="line"><span class="keyword">import</span> java.util.Set;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Post</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Integer id;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> Set&lt;Emp&gt; emps = <span class="keyword">new</span> HashSet&lt;Emp&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Post&#123;"</span> +</span><br><span class="line">                <span class="string">"id="</span> + id +</span><br><span class="line">                <span class="string">", name='"</span> + name + <span class="string">'\''</span> +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Set&lt;Emp&gt; <span class="title">getEmps</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> emps;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setEmps</span><span class="params">(Set&lt;Emp&gt; emps)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.emps = emps;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(Integer id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>Emp</code> 实体类 和 <code>Post</code> 实体类 都有对方的 <code>Set&lt;?&gt;</code> 集合,这也是操作中间表 <code>emp_post</code> 的关键属性</p>
+<h2 id="对实体类关系映射配置"><a href="#对实体类关系映射配置" class="headerlink" title="对实体类关系映射配置"></a>对实体类关系映射配置</h2><h3 id="depa-hbm-xml"><a href="#depa-hbm-xml" class="headerlink" title="depa.hbm.xml"></a>depa.hbm.xml</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0"?&gt;</span><br><span class="line"><span class="meta">&lt;!DOCTYPE hibernate-mapping PUBLIC</span></span><br><span class="line"><span class="meta">        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"</span></span><br><span class="line"><span class="meta">        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hibernate-mapping</span> <span class="attr">package</span>=<span class="string">"com.entity"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">class</span> <span class="attr">name</span>=<span class="string">"Depa"</span> <span class="attr">table</span>=<span class="string">"depa"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span> <span class="attr">name</span>=<span class="string">"id"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">generator</span> <span class="attr">class</span>=<span class="string">"increment"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"name"</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--一对多 name为实体类属性名 class为对应外键对应实体类--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--table 实体类对象数据来源数据库表名 cascade维护方式--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--inverse 指定由哪一方来维护之间的关联关系 当一方中指定了"inverse=false"(默认),那么那一方就有责任负责之间的关联关系--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">set</span> <span class="attr">name</span>=<span class="string">"emps"</span> <span class="attr">table</span>=<span class="string">"emp"</span> <span class="attr">cascade</span>=<span class="string">"all"</span> <span class="attr">inverse</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--column 为emp数据库关联depa的外键名--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">key</span> <span class="attr">column</span>=<span class="string">"depa_id"</span>&gt;</span><span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--class emps的单个实体数据为哪个实体类--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">one-to-many</span> <span class="attr">class</span>=<span class="string">"Emp"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">set</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">hibernate-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="emp-hbm-xml"><a href="#emp-hbm-xml" class="headerlink" title="emp.hbm.xml"></a>emp.hbm.xml</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0"?&gt;</span><br><span class="line"><span class="meta">&lt;!DOCTYPE hibernate-mapping PUBLIC</span></span><br><span class="line"><span class="meta">        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"</span></span><br><span class="line"><span class="meta">        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"&gt;</span></span><br><span class="line"><span class="comment">&lt;!--package为命名空间 子节点有多个类的全在com.entity包里--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--(如果不写,下面 &lt;class name="Emp" name值"Emp"需要改成"com.entity.Emp")--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hibernate-mapping</span> <span class="attr">package</span>=<span class="string">"com.entity"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">class</span> <span class="attr">name</span>=<span class="string">"Emp"</span> <span class="attr">table</span>=<span class="string">"emp"</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--主键--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span> <span class="attr">name</span>=<span class="string">"id"</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--自增方式--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">generator</span> <span class="attr">class</span>=<span class="string">"increment"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--普通数据列--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"name"</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--多对一 name为实体类属性名 class为对应外键对应实体类 column为数据库外键名(如果与name值一样可以忽略)--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">many-to-one</span> <span class="attr">name</span>=<span class="string">"depaid"</span> <span class="attr">class</span>=<span class="string">"Depa"</span> <span class="attr">column</span>=<span class="string">"depa_id"</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--多对多 name为实体类属性名 table 关联的中间表 cascade 维护方式 save-update 为维护方式是新增或修改--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">set</span> <span class="attr">name</span>=<span class="string">"posts"</span> <span class="attr">table</span>=<span class="string">"emp_post"</span> <span class="attr">cascade</span>=<span class="string">"save-update"</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--中间表emp_post 对应emp的外键--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">key</span> <span class="attr">column</span>=<span class="string">"emp_id"</span>&gt;</span><span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--class 多对多的实体类 column 中间表emp_post 对应Post的外键--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">many-to-many</span> <span class="attr">class</span>=<span class="string">"Post"</span> <span class="attr">column</span>=<span class="string">"post_id"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">set</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">hibernate-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="post-hbm-xml"><a href="#post-hbm-xml" class="headerlink" title="post.hbm.xml"></a>post.hbm.xml</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0"?&gt;</span><br><span class="line"><span class="meta">&lt;!DOCTYPE hibernate-mapping PUBLIC</span></span><br><span class="line"><span class="meta">        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"</span></span><br><span class="line"><span class="meta">        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hibernate-mapping</span> <span class="attr">package</span>=<span class="string">"com.entity"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">class</span> <span class="attr">name</span>=<span class="string">"Post"</span> <span class="attr">table</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span> <span class="attr">name</span>=<span class="string">"id"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">generator</span> <span class="attr">class</span>=<span class="string">"increment"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"name"</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--多对多 name为实体类属性名 table 关联的中间表 cascade 维护方式 save-update 为维护方式是新增或修改--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">set</span> <span class="attr">name</span>=<span class="string">"emps"</span> <span class="attr">table</span>=<span class="string">"emp_post"</span> <span class="attr">cascade</span>=<span class="string">"save-update"</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--中间表emp_post 对应post的外键--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">key</span> <span class="attr">column</span>=<span class="string">"post_id"</span>&gt;</span><span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--class 多对多的实体类 column 中间表emp_post 对应Emp的外键--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">many-to-many</span> <span class="attr">class</span>=<span class="string">"Emp"</span> <span class="attr">column</span>=<span class="string">"emp_id"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">set</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">hibernate-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>将实体类的 <code>XML</code> 映射到 hibernate.cfg.xml 配置</p>
+<h3 id="hibernate-cfg-xml"><a href="#hibernate-cfg-xml" class="headerlink" title="hibernate.cfg.xml"></a>hibernate.cfg.xml</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span><br><span class="line"><span class="meta">&lt;!DOCTYPE hibernate-configuration PUBLIC</span></span><br><span class="line"><span class="meta">        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"</span></span><br><span class="line"><span class="meta">        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hibernate-configuration</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">session-factory</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"connection.url"</span>&gt;</span>jdbc:oracle:thin:@localhost:1521:orcl<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"connection.username"</span>&gt;</span>system<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"connection.password"</span>&gt;</span>simon<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"connection.driver_class"</span>&gt;</span>oracle.jdbc.driver.OracleDriver<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"current_session_context_class"</span>&gt;</span>thread<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"show_sql"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"format_sql"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">mapping</span> <span class="attr">resource</span>=<span class="string">"com/entity/depa.hbm.xml"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mapping</span> <span class="attr">resource</span>=<span class="string">"com/entity/emp.hbm.xml"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mapping</span> <span class="attr">resource</span>=<span class="string">"com/entity/post.hbm.xml"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">session-factory</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">hibernate-configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="Hibernate工具类-HibernateUtil"><a href="#Hibernate工具类-HibernateUtil" class="headerlink" title="Hibernate工具类 HibernateUtil"></a>Hibernate工具类 HibernateUtil</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.util;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.hibernate.Session;</span><br><span class="line"><span class="keyword">import</span> org.hibernate.SessionFactory;</span><br><span class="line"><span class="keyword">import</span> org.hibernate.cfg.Configuration;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HibernateUtil</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Configuration configuration;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> SessionFactory factory;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        configuration = <span class="keyword">new</span> Configuration().configure(<span class="string">"hibernate.cfg.xml"</span>);</span><br><span class="line">        factory = configuration.buildSessionFactory();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Session <span class="title">getSession</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> factory.getCurrentSession();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="测试类-Test"><a href="#测试类-Test" class="headerlink" title="测试类 Test"></a>测试类 Test</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.entity.Depa;</span><br><span class="line"><span class="keyword">import</span> com.entity.Emp;</span><br><span class="line"><span class="keyword">import</span> com.entity.Post;</span><br><span class="line"><span class="keyword">import</span> com.util.HibernateUtil;</span><br><span class="line"><span class="keyword">import</span> org.hibernate.Session;</span><br><span class="line"><span class="keyword">import</span> org.hibernate.Transaction;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Session session = HibernateUtil.getSession();</span><br><span class="line">        Transaction transaction = session.beginTransaction();</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"查询ID为1的职员数据"</span>);</span><br><span class="line">        Emp emp = session.get(Emp.class, <span class="number">1</span>);</span><br><span class="line">        System.out.println(emp);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"通过职员得到中间表emp_post数据"</span>);</span><br><span class="line">        <span class="keyword">for</span> (Post post : emp.getPosts()) &#123;</span><br><span class="line">            System.out.println(post);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"清除职员中间表emp_post的数据"</span>);</span><br><span class="line">        emp.getPosts().clear();</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"查询ID为2的职位数据"</span>);</span><br><span class="line">        Post post = session.get(Post.class, <span class="number">2</span>);</span><br><span class="line">        System.out.println(post);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"将查到的职位给职员新增中间表emp_post数据"</span>);</span><br><span class="line">        emp.getPosts().add(post);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"查询ID为1的职员数据"</span>);</span><br><span class="line">        emp = session.get(Emp.class, <span class="number">1</span>);</span><br><span class="line">        System.out.println(emp);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"通过职员得到中间表emp_post数据"</span>);</span><br><span class="line">        <span class="keyword">for</span> (Post temp : emp.getPosts()) &#123;</span><br><span class="line">            System.out.println(temp);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"通过职员得到部门表depa数据"</span>);</span><br><span class="line">        System.out.println(emp.getDepaid());</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"查询ID为1的部门数据"</span>);</span><br><span class="line">        Depa depa = session.get(Depa.class, <span class="number">1</span>);</span><br><span class="line">        System.out.println(depa);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"将查到的部门depa给职员emp利用脏检查修改"</span>);</span><br><span class="line">        emp.setDepaid(depa);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"查询ID为1的职员数据"</span>);</span><br><span class="line">        emp = session.get(Emp.class, <span class="number">1</span>);</span><br><span class="line">        System.out.println(emp);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"通过职员得到部门表depa数据"</span>);</span><br><span class="line">        System.out.println(emp.getDepaid());</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"查询ID为2的部门数据"</span>);</span><br><span class="line">        depa = session.get(Depa.class, <span class="number">2</span>);</span><br><span class="line">        System.out.println(depa);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"得到部门对象所属职员"</span>);</span><br><span class="line">        <span class="keyword">for</span> (Emp e : depa.getEmps()) &#123;</span><br><span class="line">            System.out.println(e);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"利用脏检查删除部门对象所属的ID为1的职员"</span>);</span><br><span class="line">        depa.getEmps().remove(emp);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"查询ID为2的部门数据"</span>);</span><br><span class="line">        depa = session.get(Depa.class, <span class="number">2</span>);</span><br><span class="line">        System.out.println(depa);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"得到部门对象所属职员"</span>);</span><br><span class="line">        <span class="keyword">for</span> (Emp e : depa.getEmps()) &#123;</span><br><span class="line">            System.out.println(e);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//不提交,则上面的结果不会对数据库执行操作</span></span><br><span class="line"><span class="comment">//        transaction.commit();</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="控制台输出"><a href="#控制台输出" class="headerlink" title="控制台输出"></a>控制台输出</h2><p>看看测试类代码对数据库的数据进行了哪些操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">查询ID为1的职员数据</span><br><span class="line">Hibernate:</span><br><span class="line">    select</span><br><span class="line">        emp0_.id as id1_1_0_,</span><br><span class="line">        emp0_.name as name2_1_0_,</span><br><span class="line">        emp0_.depa_id as depa_id3_1_0_</span><br><span class="line">    from</span><br><span class="line">        emp emp0_</span><br><span class="line">    where</span><br><span class="line">        emp0_.id=?</span><br><span class="line">Emp&#123;id=1, name=&apos;张三&apos;&#125;</span><br><span class="line">通过职员得到中间表emp_post数据</span><br><span class="line">Hibernate:</span><br><span class="line">    select</span><br><span class="line">        posts0_.emp_id as emp_id1_2_0_,</span><br><span class="line">        posts0_.post_id as post_id2_2_0_,</span><br><span class="line">        post1_.id as id1_3_1_,</span><br><span class="line">        post1_.name as name2_3_1_</span><br><span class="line">    from</span><br><span class="line">        emp_post posts0_</span><br><span class="line">    inner join</span><br><span class="line">        post post1_</span><br><span class="line">            on posts0_.post_id=post1_.id</span><br><span class="line">    where</span><br><span class="line">        posts0_.emp_id=?</span><br><span class="line">Post&#123;id=1, name=&apos;职员&apos;&#125;</span><br><span class="line">清除职员中间表emp_post的数据</span><br><span class="line">查询ID为2的职位数据</span><br><span class="line">Hibernate:</span><br><span class="line">    select</span><br><span class="line">        post0_.id as id1_3_0_,</span><br><span class="line">        post0_.name as name2_3_0_</span><br><span class="line">    from</span><br><span class="line">        post post0_</span><br><span class="line">    where</span><br><span class="line">        post0_.id=?</span><br><span class="line">Post&#123;id=2, name=&apos;主管&apos;&#125;</span><br><span class="line">将查到的职位给职员新增中间表emp_post数据</span><br><span class="line">查询ID为1的职员数据</span><br><span class="line">Emp&#123;id=1, name=&apos;张三&apos;&#125;</span><br><span class="line">通过职员得到中间表emp_post数据</span><br><span class="line">Post&#123;id=2, name=&apos;主管&apos;&#125;</span><br><span class="line">通过职员得到部门表depa数据</span><br><span class="line">Hibernate:</span><br><span class="line">    select</span><br><span class="line">        depa0_.id as id1_0_0_,</span><br><span class="line">        depa0_.name as name2_0_0_</span><br><span class="line">    from</span><br><span class="line">        depa depa0_</span><br><span class="line">    where</span><br><span class="line">        depa0_.id=?</span><br><span class="line">Depa&#123;id=2, name=&apos;美工部&apos;&#125;</span><br><span class="line">查询ID为1的部门数据</span><br><span class="line">Hibernate:</span><br><span class="line">    select</span><br><span class="line">        depa0_.id as id1_0_0_,</span><br><span class="line">        depa0_.name as name2_0_0_</span><br><span class="line">    from</span><br><span class="line">        depa depa0_</span><br><span class="line">    where</span><br><span class="line">        depa0_.id=?</span><br><span class="line">Depa&#123;id=1, name=&apos;销售部&apos;&#125;</span><br><span class="line">将查到的部门depa给职员emp利用脏检查修改</span><br><span class="line">查询ID为1的职员数据</span><br><span class="line">Emp&#123;id=1, name=&apos;张三&apos;&#125;</span><br><span class="line">通过职员得到部门表depa数据</span><br><span class="line">Depa&#123;id=1, name=&apos;销售部&apos;&#125;</span><br><span class="line">查询ID为2的部门数据</span><br><span class="line">Depa&#123;id=2, name=&apos;美工部&apos;&#125;</span><br><span class="line">得到部门对象所属职员</span><br><span class="line">Hibernate:</span><br><span class="line">    select</span><br><span class="line">        emps0_.depa_id as depa_id3_1_0_,</span><br><span class="line">        emps0_.id as id1_1_0_,</span><br><span class="line">        emps0_.id as id1_1_1_,</span><br><span class="line">        emps0_.name as name2_1_1_,</span><br><span class="line">        emps0_.depa_id as depa_id3_1_1_</span><br><span class="line">    from</span><br><span class="line">        emp emps0_</span><br><span class="line">    where</span><br><span class="line">        emps0_.depa_id=?</span><br><span class="line">Emp&#123;id=1, name=&apos;张三&apos;&#125;</span><br><span class="line">利用脏检查删除部门对象所属的ID为1的职员</span><br><span class="line">查询ID为2的部门数据</span><br><span class="line">Depa&#123;id=2, name=&apos;美工部&apos;&#125;</span><br><span class="line">得到部门对象所属职员</span><br></pre></td></tr></table></figure>
+<h2 id="点击下载案例"><a href="#点击下载案例" class="headerlink" title="点击下载案例"></a><a href="https://gitee.com/admin-simon/HibernateCase/repository/archive/master.zip" target="_blank" rel="noopener">点击下载案例</a></h2>
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    <a class="pull-left" href="/2018/04/03/MyBatis框架映射文件配置以及配置文件详解/" style="float: left;">
+        ← MyBatis框架映射文件配置以及配置文件详解
+    </a>
+    
+    
+    <a class="pull-right" href="/2017/09/28/Hibernate-主键-ID-生成方式/">
+        Hibernate 主键 ID 生成方式 →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By John Doe. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+      
+            <style>
+.local-search-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  background: rgba(255, 255, 255, .9);
+  color: #333;
+  z-index: 9999;
+  border-radius: 5px;
+  overflow: scroll;
+}
+#local-search-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #151515;
+  background-color: initial;
+}
+.search-result-list {
+  list-style: none;
+  padding-left: 0;
+}
+.search-result-list > li {
+  margin-top: 15px;
+  border-bottom: 1px solid #ddd;
+  transition: all ease .3s;
+}
+.search-result-list > li:hover {
+  border-bottom: 1px solid gray;
+}
+.search-result-title {
+  font-size: 16px;
+}
+.search-result {
+  line-height: 20px;
+}
+.search-keyword {
+  font-weight: normal;
+  color: #c00;
+}
+
+@media (min-width: 890px) {
+  .popup-btn-close {
+    position: absolute;
+    top: 15px;
+    left: 35px;
+    border: 1px solid #151515;
+    padding: 0px 10px;
+    border-top-left-radius: 8px;
+    cursor: pointer;
+    transition: all ease .3s;
+  }
+  .popup-btn-close:hover {
+    background: #151515;
+    opacity: .9;
+    color: #fff;
+  }
+}
+@media (max-width: 890px) {
+  .popup-btn-close {
+    font-size: 0;
+    position: fixed;
+    right: 20px;
+    bottom: 50px;
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 1px 1px 5px #888;
+    cursor: pointer;
+  }
+  .popup-btn-close::after {
+    content: '←';
+    color: #151515;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 20px;
+    width: 100%;
+    height: 100%;
+    line-height: 50px;
+    text-align: center;
+  }
+}
+</style>
+
+<div class="popup search-popup local-search-popup">
+  <span class="popup-btn-close">
+    ESC
+  </span>
+  <div class="container">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="local-search-header clearfix">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="local-search-input-wrapper">
+          <input autocomplete="off" placeholder="Search..." type="text" id="local-search-input">
+        </div>
+      </div>
+      <div id="local-search-result"></div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/ziploader.js"></script>
+
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').fadeOut(300);
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $('.popup').fadeIn(300);
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // get search zip version
+    $.get('/?t=' + (+new Date()), function(res) {
+      if (localStorage.getItem('searchVersion') !== res) {
+        localStorage.setItem('searchVersion', res);
+        initSearchJson();
+      }
+    });
+
+    function initSearchJson () {
+      initLoad(['/'], {
+        loadOptions: {
+          success: function(obj) {
+            localStorage.setItem('searchJson', obj['search.xml'])
+          },
+          error: function(e) {
+            return console.log(e)
+          }
+        },
+        returnOptions: {
+          'json': TYPE_TEXT
+        },
+        mimeOptions:{
+          'json':'application/json'
+        }
+      })
+    }
+
+
+    // search function;
+    var searchFunc = function(search_id, content_id) {
+      'use strict';
+
+      isfetched = true;
+      var datas = JSON.parse(localStorage.getItem('searchJson'));
+      console.log(search_id)
+      var input = document.getElementById(search_id);
+      var resultContent = document.getElementById(content_id);
+      var inputEventFunction = function() {
+        var searchText = input.value.trim().toLowerCase();
+        var keywords = searchText.split(/[\s\-]+/);
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        var resultItems = [];
+        if (searchText.length > 0) {
+          // perform local searching
+          datas.forEach(function(data) {
+            var isMatch = false;
+            var hitCount = 0;
+            var searchTextCount = 0;
+            var title = data.title ? data.title.trim() : '';
+            var titleInLowerCase = title.toLowerCase();
+            var content = data.content ? data.content.trim().replace(/<[^>]+>/g,"") : '';
+            var contentInLowerCase = content.toLowerCase();
+            var articleUrl = decodeURIComponent(data.url);
+            var indexOfTitle = [];
+            var indexOfContent = [];
+            // only match articles with not empty titles
+            keywords.forEach(function(keyword) {
+              function getIndexByWord(word, text, caseSensitive) {
+                var wordLen = word.length;
+                if (wordLen === 0) {
+                  return [];
+                }
+                var startPosition = 0, position = [], index = [];
+                if (!caseSensitive) {
+                  text = text.toLowerCase();
+                  word = word.toLowerCase();
+                }
+                while ((position = text.indexOf(word, startPosition)) > -1) {
+                  index.push({position: position, word: word});
+                  startPosition = position + wordLen;
+                }
+                return index;
+              }
+
+              indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+              indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+            });
+            if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+              isMatch = true;
+              hitCount = indexOfTitle.length + indexOfContent.length;
+            }
+
+            // show search results
+
+            if (isMatch) {
+              // sort index by position of keyword
+
+              [indexOfTitle, indexOfContent].forEach(function (index) {
+                index.sort(function (itemLeft, itemRight) {
+                  if (itemRight.position !== itemLeft.position) {
+                    return itemRight.position - itemLeft.position;
+                  } else {
+                    return itemLeft.word.length - itemRight.word.length;
+                  }
+                });
+              });
+
+              // merge hits into slices
+
+              function mergeIntoSlice(text, start, end, index) {
+                var item = index[index.length - 1];
+                var position = item.position;
+                var word = item.word;
+                var hits = [];
+                var searchTextCountInSlice = 0;
+                while (position + word.length <= end && index.length != 0) {
+                  if (word === searchText) {
+                    searchTextCountInSlice++;
+                  }
+                  hits.push({position: position, length: word.length});
+                  var wordEnd = position + word.length;
+
+                  // move to next position of hit
+
+                  index.pop();
+                  while (index.length != 0) {
+                    item = index[index.length - 1];
+                    position = item.position;
+                    word = item.word;
+                    if (wordEnd > position) {
+                      index.pop();
+                    } else {
+                      break;
+                    }
+                  }
+                }
+                searchTextCount += searchTextCountInSlice;
+                return {
+                  hits: hits,
+                  start: start,
+                  end: end,
+                  searchTextCount: searchTextCountInSlice
+                };
+              }
+
+              var slicesOfTitle = [];
+              if (indexOfTitle.length != 0) {
+                slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+              }
+
+              var slicesOfContent = [];
+              while (indexOfContent.length != 0) {
+                var item = indexOfContent[indexOfContent.length - 1];
+                var position = item.position;
+                var word = item.word;
+                // cut out 100 characters
+                var start = position - 20;
+                var end = position + 80;
+                if(start < 0){
+                  start = 0;
+                }
+                if (end < position + word.length) {
+                  end = position + word.length;
+                }
+                if(end > content.length){
+                  end = content.length;
+                }
+                slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+              }
+
+              // sort slices in content by search text's count and hits' count
+
+              slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                  return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                  return sliceRight.hits.length - sliceLeft.hits.length;
+                } else {
+                  return sliceLeft.start - sliceRight.start;
+                }
+              });
+
+              // select top N slices in content
+
+              var upperBound = parseInt('2');
+              if (upperBound >= 0) {
+                slicesOfContent = slicesOfContent.slice(0, upperBound);
+              }
+
+              // highlight title and content
+
+              function highlightKeyword(text, slice) {
+                var result = '';
+                var prevEnd = slice.start;
+                slice.hits.forEach(function (hit) {
+                  result += text.substring(prevEnd, hit.position);
+                  var end = hit.position + hit.length;
+                  result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                  prevEnd = end;
+                });
+                result += text.substring(prevEnd, slice.end);
+                return result;
+              }
+
+              var resultItem = '';
+
+              if (slicesOfTitle.length != 0) {
+                resultItem += "<li><a target='_blank' href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+              } else {
+                resultItem += "<li><a target='_blank' href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+              }
+
+              slicesOfContent.forEach(function (slice) {
+                resultItem += "<a target='_blank' href='" + articleUrl + "'>" +
+                  "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                  "...</p>" + "</a>";
+              });
+
+              resultItem += "</li>";
+              resultItems.push({
+                item: resultItem,
+                searchTextCount: searchTextCount,
+                hitCount: hitCount,
+                id: resultItems.length
+              });
+            }
+          })
+        };
+        if (keywords.length === 1 && keywords[0] === "") {
+          resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+        } else if (resultItems.length === 0) {
+          resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+        } else {
+          resultItems.sort(function (resultLeft, resultRight) {
+            if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+              return resultRight.searchTextCount - resultLeft.searchTextCount;
+            } else if (resultLeft.hitCount !== resultRight.hitCount) {
+              return resultRight.hitCount - resultLeft.hitCount;
+            } else {
+              return resultRight.id - resultLeft.id;
+            }
+          });
+          var searchResultList = '<ul class=\"search-result-list\">';
+          resultItems.forEach(function (result) {
+            searchResultList += result.item;
+          })
+          searchResultList += "</ul>";
+          resultContent.innerHTML = searchResultList;
+        }
+      }
+
+      if ('auto' === 'auto') {
+        input.addEventListener('input', inputEventFunction);
+      } else {
+        $('.search-icon').click(inputEventFunction);
+        input.addEventListener('keypress', function (event) {
+          if (event.keyCode === 13) {
+            inputEventFunction();
+          }
+        });
+      }
+
+      // remove loading animation
+      $('body').css('overflow', '');
+
+      proceedsearch();
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        $('.sb-close').click();
+        searchFunc('local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+      
+</body>
+</html>
