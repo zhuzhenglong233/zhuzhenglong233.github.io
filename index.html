@@ -1,1239 +1,1038 @@
 <!DOCTYPE html>
-<!--[if lte IE 8 ]>
-<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
-<![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
-<!--
-***************  *      *     *
-      8          *    *       *
-      8          *  *         *
-      8          **           *
-      8          *  *         *
-      8          *    *       *
-      8          *      *     *
-      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
--->
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
-<!--<![endif]-->
-
+<html class="full-height">
 <head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="//cdn.bootcss.com/bulma/0.4.1/css/bulma.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  
   <title>Hexo</title>
-  <!-- Meta data -->
-    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="generator" content="Hexo">
-    <meta name="author" content="John Doe">
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-
-    <!-- Favicon, (keep icon in root folder) -->
-    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="default">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+  
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
-    
-    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
-    
-
-    <!--[if IE 8]>
-    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
-    <![endif]-->
-
-    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
-    <script src="/js/jquery-1.11.1.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
-
-    <!-- Load these in the <head> for quicker IE8+ load times -->
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="/js/html5shiv.min.js"></script>
-    <script src="/js/respond.min.js"></script>
-    <![endif]-->
-
   
   
-  <link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="atom.xml">
+    <link rel="icon" href="/favicon.png">
   
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/css/nav.css">
+<link rel="stylesheet" href="/css/layout.css">
   
 
-  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
 </head>
 
-<!--
-<body class="home-template">
--->
-<body id="index" class="lightnav animsition">
-
-      <!-- ============================ Off-canvas navigation =========================== -->
-
-    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
-        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
-            <img src="/img/close.png" alt="Close"/>
+<body>
+  <header id="navbar" class="overflow-hidden">
+  <div class="container">
+    <nav class="nav">
+         <div class="nav-left">
+            <a href="/" class="nav-item" style="font-size: 20px;">
+              <span class="logo">UnclePig</span>'s Blog
+            </a>
+         </div>
+        <div class="nav-center is-hidden position-relative" id="search_container">
+            <div class="nav-item full-width full-height">
+                <i class="fa fa-search has-padding" aria-hidden="true"></i>
+                <input type="text" id="search_input" class="search-input full-height full-width" placeholder="Search post" autofocus>
+                <i id="close_search" class="fa fa-times" aria-hidden="true"></i>
+            </div>
+            <div id="search_result"></div>
         </div>
-        <!-- Lists in Slidebars -->
-        <ul class="sb-menu">
-            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
-            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
-            <!-- Dropdown Menu -->
-			 
-            <li>
-                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
-                <ul class="sb-submenu">
-                    
-                        <li><a href="/" target="_BLANK" class="animsition-link">AAA</a></li>
-                    
-                        <li><a href="/atom.xml" target="_BLANK" class="animsition-link">BBB</a></li>
-                    
-                </ul>
-            </li>
+        <div class="nav-right nav-menu">
+            <a class="nav-item" id="search">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </a>
             
+            <a class="nav-item" href="/">
+                Home
+            </a>
             
-        	<li>
-        		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
-            	<ul class="sb-submenu">
-				  	
-				    <li><a href="/categories/API/" class="animsition-link">API<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Struts2/idea/Interceptor/AbstractInterceptor/" class="animsition-link">AbstractInterceptor<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Struts2/Action/" class="animsition-link">Action<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Hibernate/Session/Filter/" class="animsition-link">Filter<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Hexo/" class="animsition-link">Hexo<small>(2)</small></a></li>
-				    
-				    <li><a href="/categories/Hibernate/" class="animsition-link">Hibernate<small>(7)</small></a></li>
-				    
-				    <li><a href="/categories/Struts2/idea/Interceptor/" class="animsition-link">Interceptor<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Java/" class="animsition-link">Java<small>(2)</small></a></li>
-				    
-				    <li><a href="/categories/JavaScript/" class="animsition-link">JavaScript<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/API/Markdown/" class="animsition-link">Markdown<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/MyBatis/" class="animsition-link">MyBatis<small>(2)</small></a></li>
-				    
-				    <li><a href="/categories/MyBatis/MySQL/" class="animsition-link">MySQL<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Hexo/Next/" class="animsition-link">Next<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Struts2/OGNL/" class="animsition-link">OGNL<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Hibernate/Session/" class="animsition-link">Session<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Struts2/" class="animsition-link">Struts2<small>(4)</small></a></li>
-				    
-				    <li><a href="/categories/MyBatis/XML/" class="animsition-link">XML<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Hibernate/XML/" class="animsition-link">XML<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Java/extends/" class="animsition-link">extends<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/idea/" class="animsition-link">idea<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Struts2/idea/" class="animsition-link">idea<small>(2)</small></a></li>
-				    
-				    <li><a href="/categories/Hibernate/increment/" class="animsition-link">increment<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/idea/web-xml/" class="animsition-link">web.xml<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Hibernate/XML/主键/" class="animsition-link">主键<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Hibernate/关系映射/" class="animsition-link">关系映射<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/MyBatis/XML/映射配置/动态SQL/" class="animsition-link">动态SQL<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/MyBatis/XML/映射配置/" class="animsition-link">映射配置<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Hibernate/注解/" class="animsition-link">注解<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Struts2/OGNL/自定义转换器/" class="animsition-link">自定义转换器<small>(1)</small></a></li>
-				    
-				    <li><a href="/categories/Java/集合/" class="animsition-link">集合<small>(1)</small></a></li>
-				    
-				</ul>
-        	</li>
-			
+            <a class="nav-item" href="/works">
+                My Works
+            </a>
             
-            <li>
-                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
-                <ul class="sb-submenu">
-                    
-                    <li><a href="http://go.kieran.top/" class="animsition-link">Kieran</a></li>
-                    
-                    <li><a href="http://domain.com/" class="animsition-link">Name</a></li>
-                    
-                </ul>
-            </li>
+            <a class="nav-item" href="/about">
+                About
+            </a>
             
-        </ul>
-        <!-- Lists in Slidebars -->
-        <ul class="sb-menu secondary">
+        </div>
+        <span class="nav-toggle" id="navMenuDropdown">
+            <span></span>
+            <span></span>
+            <span></span>
+        </span>
+        <div class="navbar-menu position-absolute full-width content-box is-hidden-desktop is-flex flex-column center" style="top: 100%;">
             
-            <li><a href="javascript:;" class="popup-trigger" title="Search"><span class="search-icon"></span>Search</a></li>
+            <a class="nav-item flex-1" href="/">
+                Home
+            </a>
             
-            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
-            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
-        </ul>
+            <a class="nav-item flex-1" href="/works">
+                My Works
+            </a>
+            
+            <a class="nav-item flex-1" href="/about">
+                About
+            </a>
+            
+        </div>
+    </nav>
+  </div>
+</header>
+
+  <div id="main-wrap" class="position-relative" style="margin-top: 55px;">
+      <div class="main-inner-content">
+          <style>
+    .post-hover:hover {
+        box-shadow: inset 0 0 100px #000;
+        transition: box-shadow .2s;
+    }
+
+    .sub-post-container .post-hover:hover h3 {
+        text-decoration: underline gray;
+    }
+
+
+    .primary-item-main {
+        height: 330px;
+        background-size: cover;
+    }
+
+    .primary-container .title,
+    .primary-container .sub-title,
+    .primary-container .post-content-text,
+    .primary-container .date {
+        color: #fff;
+    }
+
+    .post-content-text {
+        color: #f1f1f1!important;
+    }
+
+    .primary-container .post-hover {
+        background: black;
+    }
+
+    .content-bg-mask {
+        background: rgba(0,0,0,.4);
+    }
+
+</style>
+
+<div style="background: #f5f8f9;">
+    <div id="main-container" class="container" style="padding-top: 20px;">
+        <div class="is-flex main-content justify-center">
+            <section class="column is-9">
+                
+<div class="primary-container content-box is-flex-desktop clear-padding bottom-line" style="margin-bottom: 25px;">
+    <div class="column  is-7-desktop">
+        <a href="/2018/04/05/MyBatis-映射配置解析以及动态SQL配置案例/">
+            <div class="full-height post-hover"
+                 style="
+                         background-image: url('');
+                         height: 350px;
+                         background-size: cover;
+                         background-repeat: no-repeat;
+                         ">
+                    <div class=" is-flex flex-column center content has-text-centered full-height has-padding content-bg-mask">
+                        <h1 class="title text-shadow" style="margin-bottom: 15px;">
+                            MyBatis 映射配置解析以及动态SQL配置案例
+                        </h1>
+                        <div>
+                        
+                            `
+                                <span class="tag is-post-tag">idea</span>
+                            `
+                                <span class="tag is-post-tag">多对多</span>
+                            `
+                                <span class="tag is-post-tag">一对多</span>
+                            `
+                                <span class="tag is-post-tag">多对一</span>
+                            `
+                                <span class="tag is-post-tag">MySQL</span>
+                            `
+                                <span class="tag is-post-tag">MyBatis</span>
+                            `
+                                <span class="tag is-post-tag">一对一</span>
+                            `
+                                <span class="tag is-post-tag">动态SQL</span>
+                            `
+                                <span class="tag is-post-tag">映射配置</span>
+                            
+                        
+                        </div>
+                        <p class="post-content-text is-marginless has-padding text-shadow">
+                            什么是 MyBatis ？MyBatis 是一款优秀的持久层框架，它支持定制化 SQL、存储过程以及高级映射。MyBatis 避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集。MyBatis 可以使用简单的 XML 或注解来..
+                        </p>
+                        <p class="date text-shadow">2018-04-05</p>
+                        <button class="button is-info is-small">Read More</button>
+                    </div>
+            </div>
+        </a>
     </div>
-    
-    <!-- ============================ END Off-canvas navigation =========================== -->
+    <div class="column is-5 is-hidden-touch" style="padding-left: 0;">
+        <div class="full-height is-flex flex-column justify-space-between" style="min-height: 350px;">
+            
+                
+<a class="post-hover" href="/2018/04/03/MyBatis框架映射文件配置以及配置文件详解/" style="height: 48.5%">
+    <div class="content is-hidden-touch full-height overflow-hidden" style="background-image: url('')">
+        <div class="content-bg-mask full-width full-height has-padding">
+            <h3 class="title is-marginless text-shadow">
+                MyBatis框架映射文件配置以及配置文件详解
+            </h3>
+            
+            
+            <span class="tag is-post-tag">idea</span>
+            
+            <span class="tag is-post-tag">关系映射</span>
+            
+            <span class="tag is-post-tag">MySQL</span>
+            
+            <span class="tag is-post-tag">MyBatis</span>
+            
+            <span class="tag is-post-tag">配置文件</span>
+            
+            
+            <p class="sub-title text-shadow"></p>
+            <p class="is-marginless text-shadow post-content-text">
+                什么是 MyBatis ？MyBatis 是一款优秀的持久层框架，它支持定制化 SQL、存储过程..
+            </p>
+            <p class="date text-shadow is-marginless">2018-04-03</p>
+        </div>
+    </div>
+</a>
+            
+            
+                
+<a class="post-hover" href="/2017/10/28/Hibernate-多对多-一对多-多对一-配置解析案例/" style="height: 48.5%">
+    <div class="content is-hidden-touch full-height overflow-hidden" style="background-image: url('')">
+        <div class="content-bg-mask full-width full-height has-padding">
+            <h3 class="title is-marginless text-shadow">
+                Hibernate 多对多 一对多 多对一  配置解析案例
+            </h3>
+            
+            
+            <span class="tag is-post-tag">idea</span>
+            
+            <span class="tag is-post-tag">Oracle</span>
+            
+            <span class="tag is-post-tag">Hibernate</span>
+            
+            <span class="tag is-post-tag">多对多</span>
+            
+            <span class="tag is-post-tag">一对多</span>
+            
+            <span class="tag is-post-tag">多对一</span>
+            
+            <span class="tag is-post-tag">many-to-many</span>
+            
+            <span class="tag is-post-tag">many-to-one</span>
+            
+            <span class="tag is-post-tag">one-to-many</span>
+            
+            <span class="tag is-post-tag">关系映射</span>
+            
+            
+            <p class="sub-title text-shadow"></p>
+            <p class="is-marginless text-shadow post-content-text">
+                此案例用于理解脏检查,以及Hibernate关系映射的配置pom.xml123456789101..
+            </p>
+            <p class="date text-shadow is-marginless">2017-10-28</p>
+        </div>
+    </div>
+</a>
+            
+        </div>
+    </div>
+    <div class="column is-12 is-hidden-desktop">
+        
+        
+<a class="post-hover" href="/2018/04/03/MyBatis框架映射文件配置以及配置文件详解/" style="height: 48.5%">
+    <div class="content is-hidden-touch full-height overflow-hidden" style="background-image: url('')">
+        <div class="content-bg-mask full-width full-height has-padding">
+            <h3 class="title is-marginless text-shadow">
+                MyBatis框架映射文件配置以及配置文件详解
+            </h3>
+            
+            
+            <span class="tag is-post-tag">idea</span>
+            
+            <span class="tag is-post-tag">关系映射</span>
+            
+            <span class="tag is-post-tag">MySQL</span>
+            
+            <span class="tag is-post-tag">MyBatis</span>
+            
+            <span class="tag is-post-tag">配置文件</span>
+            
+            
+            <p class="sub-title text-shadow"></p>
+            <p class="is-marginless text-shadow post-content-text">
+                什么是 MyBatis ？MyBatis 是一款优秀的持久层框架，它支持定制化 SQL、存储过程..
+            </p>
+            <p class="date text-shadow is-marginless">2018-04-03</p>
+        </div>
+    </div>
+</a>
+        
+        
+        
+<a class="post-hover" href="/2017/10/28/Hibernate-多对多-一对多-多对一-配置解析案例/" style="height: 48.5%">
+    <div class="content is-hidden-touch full-height overflow-hidden" style="background-image: url('')">
+        <div class="content-bg-mask full-width full-height has-padding">
+            <h3 class="title is-marginless text-shadow">
+                Hibernate 多对多 一对多 多对一  配置解析案例
+            </h3>
+            
+            
+            <span class="tag is-post-tag">idea</span>
+            
+            <span class="tag is-post-tag">Oracle</span>
+            
+            <span class="tag is-post-tag">Hibernate</span>
+            
+            <span class="tag is-post-tag">多对多</span>
+            
+            <span class="tag is-post-tag">一对多</span>
+            
+            <span class="tag is-post-tag">多对一</span>
+            
+            <span class="tag is-post-tag">many-to-many</span>
+            
+            <span class="tag is-post-tag">many-to-one</span>
+            
+            <span class="tag is-post-tag">one-to-many</span>
+            
+            <span class="tag is-post-tag">关系映射</span>
+            
+            
+            <p class="sub-title text-shadow"></p>
+            <p class="is-marginless text-shadow post-content-text">
+                此案例用于理解脏检查,以及Hibernate关系映射的配置pom.xml123456789101..
+            </p>
+            <p class="date text-shadow is-marginless">2017-10-28</p>
+        </div>
+    </div>
+</a>
+        
+    </div>
+</div>
 
-    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
-
-    <div id="sb-site">
-        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
-
-        <!-- ============================ Header & Logo bar =========================== -->
-
-        <div id="navigation" class="navbar navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container">
-                    <!-- Nav logo -->
-                    <div class="logo">
-                        <a href="/" title="Logo" class="animsition-link">
-                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                    
+                    
+                
+                    
+                        <div class="content-box  is-hidden-desktop" style="margin-bottom: 27px;">
+                            <a class="post-hover" href="/2018/04/03/MyBatis框架映射文件配置以及配置文件详解/">
+                            <div class="columns" style="min-height: 230px;">
+                                
+                                <div class="column is-8-desktop post-content is-flex align-center">
+                                    <div class="content">
+                                        <h3>MyBatis框架映射文件配置以及配置文件详解</h3>
+                                        
+                                        <p>
+                                            
+                                                <span class="tag is-post-tag">idea</span>
+                                            
+                                                <span class="tag is-post-tag">关系映射</span>
+                                            
+                                                <span class="tag is-post-tag">MySQL</span>
+                                            
+                                                <span class="tag is-post-tag">MyBatis</span>
+                                            
+                                                <span class="tag is-post-tag">配置文件</span>
+                                            
+                                        </p>
+                                        <p>
+                                            什么是 MyBatis ？MyBatis 是一款优秀的持久层框架，它支持定制化 SQL、存储过程以及高级映射。MyBatis 避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集。MyBatis 可以使用简单的 XML 或注解来配置和映射原生信息，将接口和 Java 的 POJOs(Plain Old Java Objects,普通的 Java对..
+                                        </p>
+                                        <p>2018-04-03</p>
+                                        <button class="button is-small">Read More</button>
+                                    </div>
+                                </div>
+                            </div>
                         </a>
-                    </div>
-                    <!-- // Nav logo -->
-                    <!-- Info-bar -->
-                    <nav>
-                        <ul class="nav">
-                            <li><a href="/" class="animsition-link">Hexo</a></li>
-                            <li class="nolink"><span>Always </span>Creative.</li>
-                            
-                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
-                            
-                            
-                            <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
-                            
-                            
-                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
-                            
-                            
-                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
-                            
-                            
-                            <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
-                            
-                            <li class="nolink"><span>Welcome!</span></li>
-                        </ul>
-                    </nav>
-                    <!--// Info-bar -->
-                </div>
-                <!-- // .container -->
-                <div class="learnmore sb-toggle-right">More</div>
-                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar before"></span>
-                <span class="icon-bar main"></span>
-                <span class="icon-bar after"></span>
-                </button>
-            </div>
-            <!-- // .navbar-inner -->
-        </div>
-
-        <!-- ============================ Header & Logo bar =========================== -->
-
-
-      <!-- ============================ Hero Image =========================== -->
-
-<section id="hero" class="scrollme">
-    <div class="container-fluid element-img" style="background: url(/img/bg_img.jpg) no-repeat center center fixed;background-size: cover">
-        <div class="row">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
-                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
-                    <div>
-                        
-                        <h2>YOU'VE MADE A <span>BRAVE</span> DECISION, WELCOME.</h2>
-                        <p></p>
-                        
-                        <h2></h2>
-                        <p>每一个不曾起舞的日子都是对生命的辜负。</p>
-                        
-
-                    </div>
-                </div>
-            </div>
-            <!-- // .col-md-12 -->
-        </div>
-        <div class="herofade beige-dk"></div>
-    </div>
-</section>
-
-<!-- Height spacing helper -->
-<div class="heightblock"></div>
-<!-- // End height spacing helper -->
-
-<!-- ============================ END Hero Image =========================== -->
-<!-- ============================ Content =========================== -->
-
-<section id="intro">
-    <div class="container">
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2018/04/05/MyBatis-映射配置解析以及动态SQL配置案例/">MyBatis 映射配置解析以及动态SQL配置案例</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2018-04-05T13:21:59.000Z" itemprop="datePublished">
-          2018-04-05
-      </time>
-    
-    
-    | 
-    <a href='/tags/idea/'>idea</a>,
-    
-    <a href='/tags/多对多/'>多对多</a>,
-    
-    <a href='/tags/一对多/'>一对多</a>,
-    
-    <a href='/tags/多对一/'>多对一</a>,
-    
-    <a href='/tags/MySQL/'>MySQL</a>,
-    
-    <a href='/tags/MyBatis/'>MyBatis</a>,
-    
-    <a href='/tags/一对一/'>一对一</a>,
-    
-    <a href='/tags/动态SQL/'>动态SQL</a>,
-    
-    <a href='/tags/映射配置/'>映射配置</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        什么是 MyBatis ？MyBatis 是一款优秀的持久层框架，它支持定制化 SQL、存储过程以及高级映射。MyBatis 避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集。MyBatis 可以使用简单的 XML 或注解来配置和映射原生信息，将接口和 Java 的 POJOs(Plain Old Java Objects,普通的 Java对象)映射成数据库中的记录。
-MyBatis的 Git 代码库corp数据库全部表结构
-                      
-                    </p>
+                        </div>
                     
-                    <p class="pull-right readMore">
-                        <a href="/2018/04/05/MyBatis-映射配置解析以及动态SQL配置案例/">Read More...</a>
-                    </p>
+                
                     
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2018/04/03/MyBatis框架映射文件配置以及配置文件详解/">MyBatis框架映射文件配置以及配置文件详解</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2018-04-03T04:08:44.000Z" itemprop="datePublished">
-          2018-04-03
-      </time>
-    
-    
-    | 
-    <a href='/tags/idea/'>idea</a>,
-    
-    <a href='/tags/关系映射/'>关系映射</a>,
-    
-    <a href='/tags/MySQL/'>MySQL</a>,
-    
-    <a href='/tags/MyBatis/'>MyBatis</a>,
-    
-    <a href='/tags/配置文件/'>配置文件</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        什么是 MyBatis ？MyBatis 是一款优秀的持久层框架，它支持定制化 SQL、存储过程以及高级映射。MyBatis 避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集。MyBatis 可以使用简单的 XML 或注解来配置和映射原生信息，将接口和 Java 的 POJOs(Plain Old Java Objects,普通的 Java对象)映射成数据库中的记录。
-MyBatis的 Git 代码库环境idea
-jdk
-m
-                      
-                    </p>
+                        <div class="content-box  is-hidden-desktop" style="margin-bottom: 27px;">
+                            <a class="post-hover" href="/2017/10/28/Hibernate-多对多-一对多-多对一-配置解析案例/">
+                            <div class="columns" style="min-height: 230px;">
+                                
+                                <div class="column is-8-desktop post-content is-flex align-center">
+                                    <div class="content">
+                                        <h3>Hibernate 多对多 一对多 多对一  配置解析案例</h3>
+                                        
+                                        <p>
+                                            
+                                                <span class="tag is-post-tag">idea</span>
+                                            
+                                                <span class="tag is-post-tag">Oracle</span>
+                                            
+                                                <span class="tag is-post-tag">Hibernate</span>
+                                            
+                                                <span class="tag is-post-tag">多对多</span>
+                                            
+                                                <span class="tag is-post-tag">一对多</span>
+                                            
+                                                <span class="tag is-post-tag">多对一</span>
+                                            
+                                                <span class="tag is-post-tag">many-to-many</span>
+                                            
+                                                <span class="tag is-post-tag">many-to-one</span>
+                                            
+                                                <span class="tag is-post-tag">one-to-many</span>
+                                            
+                                                <span class="tag is-post-tag">关系映射</span>
+                                            
+                                        </p>
+                                        <p>
+                                            此案例用于理解脏检查,以及Hibernate关系映射的配置pom.xml123456789101112131415161718192021222324252627&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;project xmlns="http://maven.apache.org/POM/4.0.0"..
+                                        </p>
+                                        <p>2017-10-28</p>
+                                        <button class="button is-small">Read More</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        </div>
                     
-                    <p class="pull-right readMore">
-                        <a href="/2018/04/03/MyBatis框架映射文件配置以及配置文件详解/">Read More...</a>
-                    </p>
+                
                     
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2017/10/28/Hibernate-多对多-一对多-多对一-配置解析案例/">Hibernate 多对多 一对多 多对一  配置解析案例</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2017-10-28T02:52:01.000Z" itemprop="datePublished">
-          2017-10-28
-      </time>
-    
-    
-    | 
-    <a href='/tags/Hibernate/'>Hibernate</a>,
-    
-    <a href='/tags/idea/'>idea</a>,
-    
-    <a href='/tags/Oracle/'>Oracle</a>,
-    
-    <a href='/tags/多对多/'>多对多</a>,
-    
-    <a href='/tags/一对多/'>一对多</a>,
-    
-    <a href='/tags/多对一/'>多对一</a>,
-    
-    <a href='/tags/many-to-many/'>many-to-many</a>,
-    
-    <a href='/tags/many-to-one/'>many-to-one</a>,
-    
-    <a href='/tags/one-to-many/'>one-to-many</a>,
-    
-    <a href='/tags/关系映射/'>关系映射</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        此案例用于理解脏检查,以及Hibernate关系映射的配置pom.xml123456789101112131415161718192021222324252627&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;project xmlns="http://maven.apache.org/POM/4.0.0"         xmlns:xsi="http://www.w3.org/2001
-                      
-                    </p>
+                        <div class="content-box  " style="margin-bottom: 27px;">
+                            <a class="post-hover" href="/2017/09/28/Hibernate-主键-ID-生成方式/">
+                            <div class="columns" style="min-height: 230px;">
+                                
+                                <div class="column is-8-desktop post-content is-flex align-center">
+                                    <div class="content">
+                                        <h3>Hibernate 主键 ID 生成方式</h3>
+                                        
+                                        <p>
+                                            
+                                                <span class="tag is-post-tag">Hibernate</span>
+                                            
+                                                <span class="tag is-post-tag">主键</span>
+                                            
+                                        </p>
+                                        <p>
+                                            ID生成方式序列sequence 只适用于Oracle12345&lt;id name="id" column="id"&gt;    &lt;generator class="sequence"&gt;        &lt;param name="sequence"&gt;person_seq&lt;/param&gt;&lt;!--指定sequen..
+                                        </p>
+                                        <p>2017-09-28</p>
+                                        <button class="button is-small">Read More</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        </div>
                     
-                    <p class="pull-right readMore">
-                        <a href="/2017/10/28/Hibernate-多对多-一对多-多对一-配置解析案例/">Read More...</a>
-                    </p>
+                
                     
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2017/09/28/Hibernate-主键-ID-生成方式/">Hibernate 主键 ID 生成方式</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2017-09-28T01:38:53.000Z" itemprop="datePublished">
-          2017-09-28
-      </time>
-    
-    
-    | 
-    <a href='/tags/Hibernate/'>Hibernate</a>,
-    
-    <a href='/tags/主键/'>主键</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        ID生成方式序列sequence 只适用于Oracle12345&lt;id name="id" column="id"&gt;    &lt;generator class="sequence"&gt;        &lt;param name="sequence"&gt;person_seq&lt;/param&gt;&lt;!--指定sequence名--&gt;    &lt;/generator&gt;&lt;/id&gt;
-                      
-                    </p>
+                        <div class="content-box  " style="margin-bottom: 27px;">
+                            <a class="post-hover" href="/2017/07/04/Java中继承与多态实例/">
+                            <div class="columns" style="min-height: 230px;">
+                                
+                                <div class="column is-8-desktop post-content is-flex align-center">
+                                    <div class="content">
+                                        <h3>Java中继承与多态实例</h3>
+                                        
+                                        <p>
+                                            
+                                                <span class="tag is-post-tag">Java</span>
+                                            
+                                                <span class="tag is-post-tag">继承</span>
+                                            
+                                                <span class="tag is-post-tag">多态</span>
+                                            
+                                                <span class="tag is-post-tag">extends</span>
+                                            
+                                                <span class="tag is-post-tag">重写</span>
+                                            
+                                        </p>
+                                        <p>
+                                            继承的概念继承是面向对象最显著的一个特性。继承是从已有的类中派生出新的类，新的类能吸收已有类的数据属性和行为，并能扩展新的能力。子类又被称为派生类； 父类又被称为超类（Super Class）。一个子类只能够继承一个父类，存在单继承局限。 在一个子类继承的时候，实际上会继承父类之中的所有操作（属性、方法），但是需要注意的是，对于所有的非私有（no pri..
+                                        </p>
+                                        <p>2017-07-04</p>
+                                        <button class="button is-small">Read More</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        </div>
                     
-                    <p class="pull-right readMore">
-                        <a href="/2017/09/28/Hibernate-主键-ID-生成方式/">Read More...</a>
-                    </p>
+                
                     
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2017/07/04/Java中继承与多态实例/">Java中继承与多态实例</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2017-07-04T04:03:55.000Z" itemprop="datePublished">
-          2017-07-04
-      </time>
-    
-    
-    | 
-    <a href='/tags/Java/'>Java</a>,
-    
-    <a href='/tags/继承/'>继承</a>,
-    
-    <a href='/tags/多态/'>多态</a>,
-    
-    <a href='/tags/extends/'>extends</a>,
-    
-    <a href='/tags/重写/'>重写</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        继承的概念继承是面向对象最显著的一个特性。继承是从已有的类中派生出新的类，新的类能吸收已有类的数据属性和行为，并能扩展新的能力。子类又被称为派生类； 父类又被称为超类（Super Class）。一个子类只能够继承一个父类，存在单继承局限。 在一个子类继承的时候，实际上会继承父类之中的所有操作（属性、方法），但是需要注意的是，对于所有的非私有（no private）操作属于显式继承（可以直接利用对象操作），而所有的私有操作属于隐式继承（间
-                      
-                    </p>
+                        <div class="content-box  " style="margin-bottom: 27px;">
+                            <a class="post-hover" href="/2017/06/29/Struts2如何在Action与JSP之间传值/">
+                            <div class="columns" style="min-height: 230px;">
+                                
+                                <div class="column is-8-desktop post-content is-flex align-center">
+                                    <div class="content">
+                                        <h3>Struts2如何在Action与JSP之间传值</h3>
+                                        
+                                        <p>
+                                            
+                                                <span class="tag is-post-tag">idea</span>
+                                            
+                                                <span class="tag is-post-tag">OGNL</span>
+                                            
+                                                <span class="tag is-post-tag">Struts2</span>
+                                            
+                                                <span class="tag is-post-tag">Action</span>
+                                            
+                                                <span class="tag is-post-tag">传值</span>
+                                            
+                                        </p>
+                                        <p>
+                                            struts2中Action到底是什么，怎么理解问题描述struts2中Action到底是什么，怎么理解1.配置完web.xml2.创建视图页面login.jsp3.创建业务控制器LoginAction类（解释说：创建业务控制器LoginAction类，该类为程序的Action类）4.配置LoginAction类（解释说：当Action处理完客户端请求后..
+                                        </p>
+                                        <p>2017-06-29</p>
+                                        <button class="button is-small">Read More</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        </div>
                     
-                    <p class="pull-right readMore">
-                        <a href="/2017/07/04/Java中继承与多态实例/">Read More...</a>
-                    </p>
+                
                     
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2017/06/29/Struts2如何在Action与JSP之间传值/">Struts2如何在Action与JSP之间传值</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2017-06-29T11:39:38.000Z" itemprop="datePublished">
-          2017-06-29
-      </time>
-    
-    
-    | 
-    <a href='/tags/idea/'>idea</a>,
-    
-    <a href='/tags/OGNL/'>OGNL</a>,
-    
-    <a href='/tags/Struts2/'>Struts2</a>,
-    
-    <a href='/tags/Action/'>Action</a>,
-    
-    <a href='/tags/传值/'>传值</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        struts2中Action到底是什么，怎么理解问题描述struts2中Action到底是什么，怎么理解1.配置完web.xml2.创建视图页面login.jsp3.创建业务控制器LoginAction类（解释说：创建业务控制器LoginAction类，该类为程序的Action类）4.配置LoginAction类（解释说：当Action处理完客户端请求后返回一个字符串，没个字符串对应一个视图）
-那么这个Action到底是什么，是一个类吗
-                      
-                    </p>
+                        <div class="content-box  " style="margin-bottom: 27px;">
+                            <a class="post-hover" href="/2017/06/18/Hibernate主键自增长increment/">
+                            <div class="columns" style="min-height: 230px;">
+                                
+                                <div class="column is-8-desktop post-content is-flex align-center">
+                                    <div class="content">
+                                        <h3>Hibernate主键自增长increment</h3>
+                                        
+                                        <p>
+                                            
+                                                <span class="tag is-post-tag">Hibernate</span>
+                                            
+                                                <span class="tag is-post-tag">increment</span>
+                                            
+                                        </p>
+                                        <p>
+                                            increment由Hibernate从数据库中取出主键的最大值（每个session只取1次），以该值为基础，每次增量为1，在内存中生成主键，不依赖于底层的数据库，因此可以跨数据库。
+123&lt;id name="id" column="id"&gt;    &lt;generator class="increment" /&gt;&lt;/id&gt..
+                                        </p>
+                                        <p>2017-06-18</p>
+                                        <button class="button is-small">Read More</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        </div>
                     
-                    <p class="pull-right readMore">
-                        <a href="/2017/06/29/Struts2如何在Action与JSP之间传值/">Read More...</a>
-                    </p>
+                
                     
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2017/06/18/Hibernate主键自增长increment/">Hibernate主键自增长increment</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2017-06-18T04:21:14.000Z" itemprop="datePublished">
-          2017-06-18
-      </time>
-    
-    
-    | 
-    <a href='/tags/Hibernate/'>Hibernate</a>,
-    
-    <a href='/tags/increment/'>increment</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        increment由Hibernate从数据库中取出主键的最大值（每个session只取1次），以该值为基础，每次增量为1，在内存中生成主键，不依赖于底层的数据库，因此可以跨数据库。
-123&lt;id name="id" column="id"&gt;    &lt;generator class="increment" /&gt;&lt;/id&gt;
-Hibernate调用org.hibernate.id.IncrementGen
-                      
-                    </p>
+                        <div class="content-box  " style="margin-bottom: 27px;">
+                            <a class="post-hover" href="/2017/06/14/Struts2拦截器实现用户访问控制/">
+                            <div class="columns" style="min-height: 230px;">
+                                
+                                <div class="column is-8-desktop post-content is-flex align-center">
+                                    <div class="content">
+                                        <h3>Struts2拦截器实现用户访问控制</h3>
+                                        
+                                        <p>
+                                            
+                                                <span class="tag is-post-tag">idea</span>
+                                            
+                                                <span class="tag is-post-tag">Struts2</span>
+                                            
+                                                <span class="tag is-post-tag">拦截器</span>
+                                            
+                                                <span class="tag is-post-tag">Interceptor</span>
+                                            
+                                        </p>
+                                        <p>
+                                            拦截器 Interceptorjava里的拦截器是动态拦截Action调用的对象。它提供了一种机制可以使开发者可以定义在一个action执行的前后执行的代码，也可以在一个action执行前阻止其执行，同时也提供了一种可以提取action中可重用部分的方式。在AOP（Aspect-Oriented Programming）中拦截器用于在某个方法或字段被访问..
+                                        </p>
+                                        <p>2017-06-14</p>
+                                        <button class="button is-small">Read More</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        </div>
                     
-                    <p class="pull-right readMore">
-                        <a href="/2017/06/18/Hibernate主键自增长increment/">Read More...</a>
-                    </p>
+                
                     
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2017/06/14/Struts2拦截器实现用户访问控制/">Struts2拦截器实现用户访问控制</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2017-06-14T03:00:19.000Z" itemprop="datePublished">
-          2017-06-14
-      </time>
-    
-    
-    | 
-    <a href='/tags/idea/'>idea</a>,
-    
-    <a href='/tags/Struts2/'>Struts2</a>,
-    
-    <a href='/tags/拦截器/'>拦截器</a>,
-    
-    <a href='/tags/Interceptor/'>Interceptor</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        拦截器 Interceptorjava里的拦截器是动态拦截Action调用的对象。它提供了一种机制可以使开发者可以定义在一个action执行的前后执行的代码，也可以在一个action执行前阻止其执行，同时也提供了一种可以提取action中可重用部分的方式。在AOP（Aspect-Oriented Programming）中拦截器用于在某个方法或字段被访问之前，进行拦截然后在之前或之后加入某些操作。
-自定义拦截器自定义一个实现Interc
-                      
-                    </p>
+                        <div class="content-box  " style="margin-bottom: 27px;">
+                            <a class="post-hover" href="/2017/06/12/OGNL创建和配置自定义日期类型转换器/">
+                            <div class="columns" style="min-height: 230px;">
+                                
+                                    <div class="column is-4-desktop is-5-tablet post-avatar is-hidden-mobile"
+                                         style="margin: 10px; background-size: cover;background-image: url('http://p87bi0e6z.bkt.clouddn.com/20180612155505.png')">
+                                    </div>
+                                
+                                <div class="column is-8-desktop post-content is-flex align-center">
+                                    <div class="content">
+                                        <h3>OGNL创建和配置自定义日期类型转换器</h3>
+                                        
+                                        <p>
+                                            
+                                                <span class="tag is-post-tag">idea</span>
+                                            
+                                                <span class="tag is-post-tag">Java</span>
+                                            
+                                                <span class="tag is-post-tag">OGNL</span>
+                                            
+                                                <span class="tag is-post-tag">自定义转换器</span>
+                                            
+                                                <span class="tag is-post-tag">Struts2</span>
+                                            
+                                        </p>
+                                        <p>
+                                            OGNLOGNL 中文名 对象图导航语言 是 Object-Graph Navigation Language 的缩写，它是一种功能强大的表达式语言，通过它简单一致的表达式语法，可以存取对象的任意属性，调用对象的方法，遍历整个对象的结构图，实现字段类型转化等功能。它使用相同的表达式去存取对象的属性。
+基于OGNL的类型转换器Struts2的类型转换器都需..
+                                        </p>
+                                        <p>2017-06-12</p>
+                                        <button class="button is-small">Read More</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        </div>
                     
-                    <p class="pull-right readMore">
-                        <a href="/2017/06/14/Struts2拦截器实现用户访问控制/">Read More...</a>
-                    </p>
+                
                     
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2017/06/12/OGNL创建和配置自定义日期类型转换器/">OGNL创建和配置自定义日期类型转换器</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2017-06-12T06:52:58.000Z" itemprop="datePublished">
-          2017-06-12
-      </time>
-    
-    
-    | 
-    <a href='/tags/idea/'>idea</a>,
-    
-    <a href='/tags/Java/'>Java</a>,
-    
-    <a href='/tags/OGNL/'>OGNL</a>,
-    
-    <a href='/tags/自定义转换器/'>自定义转换器</a>,
-    
-    <a href='/tags/Struts2/'>Struts2</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        OGNLOGNL 中文名 对象图导航语言 是 Object-Graph Navigation Language 的缩写，它是一种功能强大的表达式语言，通过它简单一致的表达式语法，可以存取对象的任意属性，调用对象的方法，遍历整个对象的结构图，实现字段类型转化等功能。它使用相同的表达式去存取对象的属性。
-基于OGNL的类型转换器Struts2的类型转换器都需要实现一个TypeConverter接口，该接口位于ognl.jar包内，也是就St
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2017/06/12/OGNL创建和配置自定义日期类型转换器/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2017/06/07/Struts2的配置和一个简单的例子/">Struts2的配置和一个简单的例子</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2017-06-07T08:29:30.000Z" itemprop="datePublished">
-          2017-06-07
-      </time>
-    
-    
-    | 
-    <a href='/tags/idea/'>idea</a>,
-    
-    <a href='/tags/Struts2/'>Struts2</a>,
-    
-    <a href='/tags/servlet/'>servlet</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        环境idea
+                        <div class="content-box  " style="margin-bottom: 27px;">
+                            <a class="post-hover" href="/2017/06/07/Struts2的配置和一个简单的例子/">
+                            <div class="columns" style="min-height: 230px;">
+                                
+                                    <div class="column is-4-desktop is-5-tablet post-avatar is-hidden-mobile"
+                                         style="margin: 10px; background-size: cover;background-image: url('http://p87bi0e6z.bkt.clouddn.com/20180607164908.png')">
+                                    </div>
+                                
+                                <div class="column is-8-desktop post-content is-flex align-center">
+                                    <div class="content">
+                                        <h3>Struts2的配置和一个简单的例子</h3>
+                                        
+                                        <p>
+                                            
+                                                <span class="tag is-post-tag">idea</span>
+                                            
+                                                <span class="tag is-post-tag">Struts2</span>
+                                            
+                                                <span class="tag is-post-tag">servlet</span>
+                                            
+                                        </p>
+                                        <p>
+                                            环境idea
 tomcat
 jdk
 maven
 步骤pom.xml 配置 Struts2点击前往获取自己想要的版本对应的XML
-123456789&lt;dependencies&gt;    &lt;!-- https://mvnrepository.com/artifact/org.apache.struts/struts2-core --&gt;    &lt;dependency&gt;        &lt;groupId&g
-                      
-                    </p>
+123456789&lt;dependencies&gt;    &lt;!-- https://mvnrepository.com/artifact/org.apache.struts/struts2-core --&gt; ..
+                                        </p>
+                                        <p>2017-06-07</p>
+                                        <button class="button is-small">Read More</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        </div>
                     
-                    <p class="pull-right readMore">
-                        <a href="/2017/06/07/Struts2的配置和一个简单的例子/">Read More...</a>
-                    </p>
+                
+                <!--翻頁-->
+                <nav class="pagination is-flex" style="justify-content: flex-end">
                     
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <nav class="pagination" role="pagination">
-          
-          <a class="pull-right" href="/page/2/">Older Posts →</a>
-        </nav>
-    </div>
-</section>
-<section id="statement">
-    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
-        <div class="row">
-            <p>虽然还没想好写点什么，但是总觉得这里放句话比较和谐。</p>
-        </div>
-    </div>
-</section>
-<!-- ============================ END Content =========================== -->
-
-      
-<!-- ============================ Footer =========================== -->
-
-<footer>
-    <div class="container">
-            <div class="copy">
-                <p>
-                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By John Doe. All Rights Reserved.
-                </p>
-                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
-            </div>
-            <div class="social">
-                <ul>
+                        
+                        
+                            <a class="pagination-next" href="/page/2/">Next page</a>
+                        
                     
-                    <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
-                    
-                    
-                    <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
-                    
-                    
-                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
-                    
-                    
-                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
-                    
-                    
-                    <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
-                    
-                </ul>
-            </div>
-            <div class="clearfix"> </div>
-        </div>
-</footer>
+                </nav>
+            </section>
+            
+                <style>
+    /*user info start*/
+    .user-info {
+        padding: 15px 0 0;
+    }
 
-<!-- ============================ END Footer =========================== -->
-      <!-- Load our scripts -->
-<!-- Resizable 'on-demand' full-height hero -->
-<script type="text/javascript">
-    var resizeHero = function () {
-        var hero = $(".cover,.heightblock"),
-            window1 = $(window);
-        hero.css({
-            "height": window1.height()
-        });
-    };
+    .user-info .avatar {
+        width: 155px;
+        height: 155px;
+        border-radius: 50%;
+    }
 
-    resizeHero();
+    .sns-container {
+        flex-wrap: wrap;
+    }
 
-    $(window).resize(function () {
-        resizeHero();
-    });
-</script>
-<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
-<script src="/js/scripts.js"></script><!-- Theme scripts -->
+    .sns-container a{
+        color: black;
+    }
+    /*user info end*/
 
+    /*Tag start*/
+    #tag_cloud .tags-item{
+        display: inline-block;
+        color: #000;
+        border: 1px solid gray;
 
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-$('#intro').find('img').each(function(){
-  var alt = this.alt;
+        margin: 4px 2px;
+        padding: 0 4px;
+        border-radius: 6px;
+    }
+    /*Tag end*/
 
-  if (alt){
-    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
-  }
+    /*Site box start*/
+    .site-box {
+        height: 60px;
+    }
+    /*Site box end*/
 
-  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
-});
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
-</script>
+    .category-list-item,
+    .archive-list-item {
+        display: flex;
+        margin-bottom: 4px;
+        justify-content: space-between;
+    }
+    .category-list-link,
+    .archive-list-link {
+        color: black;
+    }
 
-
-
-      
-            <style>
-.local-search-popup {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  background: rgba(255, 255, 255, .9);
-  color: #333;
-  z-index: 9999;
-  border-radius: 5px;
-  overflow: scroll;
-}
-#local-search-input {
-  width: 100%;
-  border: none;
-  outline: none;
-  border-bottom: 1px solid #151515;
-  background-color: initial;
-}
-.search-result-list {
-  list-style: none;
-  padding-left: 0;
-}
-.search-result-list > li {
-  margin-top: 15px;
-  border-bottom: 1px solid #ddd;
-  transition: all ease .3s;
-}
-.search-result-list > li:hover {
-  border-bottom: 1px solid gray;
-}
-.search-result-title {
-  font-size: 16px;
-}
-.search-result {
-  line-height: 20px;
-}
-.search-keyword {
-  font-weight: normal;
-  color: #c00;
-}
-
-@media (min-width: 890px) {
-  .popup-btn-close {
-    position: absolute;
-    top: 15px;
-    left: 35px;
-    border: 1px solid #151515;
-    padding: 0px 10px;
-    border-top-left-radius: 8px;
-    cursor: pointer;
-    transition: all ease .3s;
-  }
-  .popup-btn-close:hover {
-    background: #151515;
-    opacity: .9;
-    color: #fff;
-  }
-}
-@media (max-width: 890px) {
-  .popup-btn-close {
-    font-size: 0;
-    position: fixed;
-    right: 20px;
-    bottom: 50px;
-    width: 50px;
-    height: 50px;
-    background: #fff;
-    border-radius: 50%;
-    box-shadow: 1px 1px 5px #888;
-    cursor: pointer;
-  }
-  .popup-btn-close::after {
-    content: '←';
-    color: #151515;
-    position: absolute;
-    top: 0;
-    left: 0;
-    font-size: 20px;
-    width: 100%;
-    height: 100%;
-    line-height: 50px;
-    text-align: center;
-  }
-}
+    .category-list-count,
+    .archive-list-count {
+        width: 32px;
+        text-align: center;
+        border-radius: 4px;
+        color: #fff;
+        background-color: gray;
+    }
 </style>
-
-<div class="popup search-popup local-search-popup">
-  <span class="popup-btn-close">
-    ESC
-  </span>
-  <div class="container">
-    <div class="col-md-8 col-md-offset-2">
-      <div class="local-search-header clearfix">
-        <span class="search-icon">
-          <i class="fa fa-search"></i>
-        </span>
-        <div class="local-search-input-wrapper">
-          <input autocomplete="off" placeholder="Search..." type="text" id="local-search-input">
+<aside class="column is-hidden-touch is-3" style="max-width: 280px; min-width: 230px">
+    <div class="content-box user-info">
+        <div class="has-padding">
+            <header class="has-text-centered">
+                <img class="avatar" src="https://cdn2.iconfinder.com/data/icons/rcons-user/32/male-shadow-circle-512.png">
+            </header>
+            <section class="has-text-centered">
+                <h3><strong>UnclePig</strong></h3>
+                <p class="sub-title">A Touch Of Zen</p>
+                
+                <p class="is-flex center" style=" color: gray">
+                    <i class="fa fa-map-marker" style="padding: 5px"></i>
+                    China
+                </p>
+                
+            </section>
         </div>
-      </div>
-      <div id="local-search-result"></div>
+        <div class="top-line">
+            <ul class="sns-container justify-center is-flex has-padding">
+                
+
+                
+                <li>
+                    <a target="_blank" href="https://twitter.com/ehazon">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                        </span>
+                    </a>
+                </li>
+                
+
+                
+                <li>
+                    <a target="_blank" href="https://www.zhihu.com/people/margretz">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa  fa-stack-1x fa-inverse">知</i>
+                                        </span>
+                    </a>
+                </li>
+                
+
+                
+
+                
+
+                
+                <li>
+                    <a target="_blank" href="https://github.com/haojen">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                        </span>
+                    </a>
+                </li>
+                
+
+                
+            </ul>
+        </div>
     </div>
-  </div>
+    <div class="content-box">
+        <!--post数量和tag category 数量-->
+        <div class="site-box is-flex">
+            <div class="flex-1 is-flex flex-column center full-height right-line">
+                <strong>20</strong>
+                <p>Posts</p>
+            </div>
+            <div class="flex-1 is-flex flex-column center full-height">
+                <strong>46</strong>
+                <p>Tags</p>
+            </div>
+        </div>
+    </div>
+    <div id='tag_cloud' class="content-inner content-box">
+        <div class="has-text-centered">
+            <strong>Tags</strong>
+        </div>
+        <div class="content-inner is-flex flex-wrap justify-space-between">
+            
+                <a class="tags-item" href="tags/Hexo/" title="Hexo" rel="2">
+                    Hexo
+                </a>
+            
+                <a class="tags-item" href="tags/搭建博客/" title="搭建博客" rel="2">
+                    搭建博客
+                </a>
+            
+                <a class="tags-item" href="tags/idea/" title="idea" rel="8">
+                    idea
+                </a>
+            
+                <a class="tags-item" href="tags/Oracle/" title="Oracle" rel="1">
+                    Oracle
+                </a>
+            
+                <a class="tags-item" href="tags/Hibernate/" title="Hibernate" rel="7">
+                    Hibernate
+                </a>
+            
+                <a class="tags-item" href="tags/多对多/" title="多对多" rel="2">
+                    多对多
+                </a>
+            
+                <a class="tags-item" href="tags/一对多/" title="一对多" rel="2">
+                    一对多
+                </a>
+            
+                <a class="tags-item" href="tags/多对一/" title="多对一" rel="2">
+                    多对一
+                </a>
+            
+                <a class="tags-item" href="tags/many-to-many/" title="many-to-many" rel="1">
+                    many-to-many
+                </a>
+            
+                <a class="tags-item" href="tags/many-to-one/" title="many-to-one" rel="1">
+                    many-to-one
+                </a>
+            
+                <a class="tags-item" href="tags/one-to-many/" title="one-to-many" rel="1">
+                    one-to-many
+                </a>
+            
+                <a class="tags-item" href="tags/关系映射/" title="关系映射" rel="2">
+                    关系映射
+                </a>
+            
+                <a class="tags-item" href="tags/increment/" title="increment" rel="1">
+                    increment
+                </a>
+            
+                <a class="tags-item" href="tags/主键/" title="主键" rel="1">
+                    主键
+                </a>
+            
+                <a class="tags-item" href="tags/mappedBy/" title="mappedBy" rel="1">
+                    mappedBy
+                </a>
+            
+                <a class="tags-item" href="tags/JoinColumn/" title="JoinColumn" rel="1">
+                    JoinColumn
+                </a>
+            
+                <a class="tags-item" href="tags/Java/" title="Java" rel="3">
+                    Java
+                </a>
+            
+                <a class="tags-item" href="tags/继承/" title="继承" rel="1">
+                    继承
+                </a>
+            
+                <a class="tags-item" href="tags/多态/" title="多态" rel="1">
+                    多态
+                </a>
+            
+                <a class="tags-item" href="tags/extends/" title="extends" rel="1">
+                    extends
+                </a>
+            
+                <a class="tags-item" href="tags/重写/" title="重写" rel="1">
+                    重写
+                </a>
+            
+                <a class="tags-item" href="tags/集合/" title="集合" rel="1">
+                    集合
+                </a>
+            
+                <a class="tags-item" href="tags/API/" title="API" rel="1">
+                    API
+                </a>
+            
+                <a class="tags-item" href="tags/Markdown/" title="Markdown" rel="1">
+                    Markdown
+                </a>
+            
+                <a class="tags-item" href="tags/配置/" title="配置" rel="1">
+                    配置
+                </a>
+            
+                <a class="tags-item" href="tags/MySQL/" title="MySQL" rel="2">
+                    MySQL
+                </a>
+            
+                <a class="tags-item" href="tags/MyBatis/" title="MyBatis" rel="2">
+                    MyBatis
+                </a>
+            
+                <a class="tags-item" href="tags/一对一/" title="一对一" rel="1">
+                    一对一
+                </a>
+            
+                <a class="tags-item" href="tags/动态SQL/" title="动态SQL" rel="1">
+                    动态SQL
+                </a>
+            
+                <a class="tags-item" href="tags/映射配置/" title="映射配置" rel="1">
+                    映射配置
+                </a>
+            
+                <a class="tags-item" href="tags/配置文件/" title="配置文件" rel="1">
+                    配置文件
+                </a>
+            
+                <a class="tags-item" href="tags/OGNL/" title="OGNL" rel="2">
+                    OGNL
+                </a>
+            
+                <a class="tags-item" href="tags/自定义转换器/" title="自定义转换器" rel="1">
+                    自定义转换器
+                </a>
+            
+                <a class="tags-item" href="tags/Struts2/" title="Struts2" rel="4">
+                    Struts2
+                </a>
+            
+                <a class="tags-item" href="tags/Session/" title="Session" rel="2">
+                    Session
+                </a>
+            
+                <a class="tags-item" href="tags/Filter/" title="Filter" rel="1">
+                    Filter
+                </a>
+            
+                <a class="tags-item" href="tags/Action/" title="Action" rel="1">
+                    Action
+                </a>
+            
+                <a class="tags-item" href="tags/传值/" title="传值" rel="1">
+                    传值
+                </a>
+            
+                <a class="tags-item" href="tags/拦截器/" title="拦截器" rel="1">
+                    拦截器
+                </a>
+            
+                <a class="tags-item" href="tags/Interceptor/" title="Interceptor" rel="1">
+                    Interceptor
+                </a>
+            
+                <a class="tags-item" href="tags/servlet/" title="servlet" rel="2">
+                    servlet
+                </a>
+            
+                <a class="tags-item" href="tags/SessionFactory/" title="SessionFactory" rel="1">
+                    SessionFactory
+                </a>
+            
+                <a class="tags-item" href="tags/Next/" title="Next" rel="1">
+                    Next
+                </a>
+            
+                <a class="tags-item" href="tags/Javaweb/" title="Javaweb" rel="1">
+                    Javaweb
+                </a>
+            
+                <a class="tags-item" href="tags/web-xml/" title="web.xml" rel="1">
+                    web.xml
+                </a>
+            
+                <a class="tags-item" href="tags/JavaScript/" title="JavaScript" rel="1">
+                    JavaScript
+                </a>
+            
+        </div>
+    </div>
+    <div class="content-inner content-box">
+        <div class="has-text-centered">
+            <strong>Categories</strong>
+        </div>
+        <div class="content-inner">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/API/">API</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hibernate/">Hibernate</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyBatis/">MyBatis</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Struts2/">Struts2</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/idea/">idea</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+    <div class="content-inner content-box">
+        <div class="has-text-centered">
+            <strong>Archives</strong>
+        </div>
+        <div class="content-inner">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+</aside>
+            
+        </div>
+    </div>
 </div>
 
-<script src="/js/ziploader.js"></script>
+      </div>
+  </div>
+  <style>
+  #footer {
+    min-height: 10vh;
+    background: black;
+    color: #fff;
+  }
 
+  #footer a {
+    color: #e1e1e1;
+  }
+</style>
+<footer id="footer" class="has-text-centered is-flex center">
+  <div class="container has-padding">
+    <div>
+      <div>
+        <!--请您保留作者署名, 主题制作来之不易-->
+        Theme by <a href="http://haojen.github.io/">Haojen Ma</a>
+        <br>
+        Copyright © John Doe 2018
+        <br>
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      </div>
+    </div>
+  </div>
+</footer>
 
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    // monitor main search box;
+<script src="/js/search_core.js"></script>
+<script src="/js/script.js"></script>
 
-    var onPopupClose = function (e) {
-      $('.popup').fadeOut(300);
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $('.popup').fadeIn(300);
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // get search zip version
-    $.get('/?t=' + (+new Date()), function(res) {
-      if (localStorage.getItem('searchVersion') !== res) {
-        localStorage.setItem('searchVersion', res);
-        initSearchJson();
-      }
-    });
-
-    function initSearchJson () {
-      initLoad(['/'], {
-        loadOptions: {
-          success: function(obj) {
-            localStorage.setItem('searchJson', obj['search.xml'])
-          },
-          error: function(e) {
-            return console.log(e)
-          }
-        },
-        returnOptions: {
-          'json': TYPE_TEXT
-        },
-        mimeOptions:{
-          'json':'application/json'
-        }
-      })
-    }
-
-
-    // search function;
-    var searchFunc = function(search_id, content_id) {
-      'use strict';
-
-      isfetched = true;
-      var datas = JSON.parse(localStorage.getItem('searchJson'));
-      console.log(search_id)
-      var input = document.getElementById(search_id);
-      var resultContent = document.getElementById(content_id);
-      var inputEventFunction = function() {
-        var searchText = input.value.trim().toLowerCase();
-        var keywords = searchText.split(/[\s\-]+/);
-        if (keywords.length > 1) {
-          keywords.push(searchText);
-        }
-        var resultItems = [];
-        if (searchText.length > 0) {
-          // perform local searching
-          datas.forEach(function(data) {
-            var isMatch = false;
-            var hitCount = 0;
-            var searchTextCount = 0;
-            var title = data.title ? data.title.trim() : '';
-            var titleInLowerCase = title.toLowerCase();
-            var content = data.content ? data.content.trim().replace(/<[^>]+>/g,"") : '';
-            var contentInLowerCase = content.toLowerCase();
-            var articleUrl = decodeURIComponent(data.url);
-            var indexOfTitle = [];
-            var indexOfContent = [];
-            // only match articles with not empty titles
-            keywords.forEach(function(keyword) {
-              function getIndexByWord(word, text, caseSensitive) {
-                var wordLen = word.length;
-                if (wordLen === 0) {
-                  return [];
-                }
-                var startPosition = 0, position = [], index = [];
-                if (!caseSensitive) {
-                  text = text.toLowerCase();
-                  word = word.toLowerCase();
-                }
-                while ((position = text.indexOf(word, startPosition)) > -1) {
-                  index.push({position: position, word: word});
-                  startPosition = position + wordLen;
-                }
-                return index;
-              }
-
-              indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-              indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-            });
-            if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-              isMatch = true;
-              hitCount = indexOfTitle.length + indexOfContent.length;
-            }
-
-            // show search results
-
-            if (isMatch) {
-              // sort index by position of keyword
-
-              [indexOfTitle, indexOfContent].forEach(function (index) {
-                index.sort(function (itemLeft, itemRight) {
-                  if (itemRight.position !== itemLeft.position) {
-                    return itemRight.position - itemLeft.position;
-                  } else {
-                    return itemLeft.word.length - itemRight.word.length;
-                  }
-                });
-              });
-
-              // merge hits into slices
-
-              function mergeIntoSlice(text, start, end, index) {
-                var item = index[index.length - 1];
-                var position = item.position;
-                var word = item.word;
-                var hits = [];
-                var searchTextCountInSlice = 0;
-                while (position + word.length <= end && index.length != 0) {
-                  if (word === searchText) {
-                    searchTextCountInSlice++;
-                  }
-                  hits.push({position: position, length: word.length});
-                  var wordEnd = position + word.length;
-
-                  // move to next position of hit
-
-                  index.pop();
-                  while (index.length != 0) {
-                    item = index[index.length - 1];
-                    position = item.position;
-                    word = item.word;
-                    if (wordEnd > position) {
-                      index.pop();
-                    } else {
-                      break;
-                    }
-                  }
-                }
-                searchTextCount += searchTextCountInSlice;
-                return {
-                  hits: hits,
-                  start: start,
-                  end: end,
-                  searchTextCount: searchTextCountInSlice
-                };
-              }
-
-              var slicesOfTitle = [];
-              if (indexOfTitle.length != 0) {
-                slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-              }
-
-              var slicesOfContent = [];
-              while (indexOfContent.length != 0) {
-                var item = indexOfContent[indexOfContent.length - 1];
-                var position = item.position;
-                var word = item.word;
-                // cut out 100 characters
-                var start = position - 20;
-                var end = position + 80;
-                if(start < 0){
-                  start = 0;
-                }
-                if (end < position + word.length) {
-                  end = position + word.length;
-                }
-                if(end > content.length){
-                  end = content.length;
-                }
-                slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-              }
-
-              // sort slices in content by search text's count and hits' count
-
-              slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                  return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                  return sliceRight.hits.length - sliceLeft.hits.length;
-                } else {
-                  return sliceLeft.start - sliceRight.start;
-                }
-              });
-
-              // select top N slices in content
-
-              var upperBound = parseInt('2');
-              if (upperBound >= 0) {
-                slicesOfContent = slicesOfContent.slice(0, upperBound);
-              }
-
-              // highlight title and content
-
-              function highlightKeyword(text, slice) {
-                var result = '';
-                var prevEnd = slice.start;
-                slice.hits.forEach(function (hit) {
-                  result += text.substring(prevEnd, hit.position);
-                  var end = hit.position + hit.length;
-                  result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                  prevEnd = end;
-                });
-                result += text.substring(prevEnd, slice.end);
-                return result;
-              }
-
-              var resultItem = '';
-
-              if (slicesOfTitle.length != 0) {
-                resultItem += "<li><a target='_blank' href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-              } else {
-                resultItem += "<li><a target='_blank' href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-              }
-
-              slicesOfContent.forEach(function (slice) {
-                resultItem += "<a target='_blank' href='" + articleUrl + "'>" +
-                  "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                  "...</p>" + "</a>";
-              });
-
-              resultItem += "</li>";
-              resultItems.push({
-                item: resultItem,
-                searchTextCount: searchTextCount,
-                hitCount: hitCount,
-                id: resultItems.length
-              });
-            }
-          })
-        };
-        if (keywords.length === 1 && keywords[0] === "") {
-          resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
-        } else if (resultItems.length === 0) {
-          resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
-        } else {
-          resultItems.sort(function (resultLeft, resultRight) {
-            if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-              return resultRight.searchTextCount - resultLeft.searchTextCount;
-            } else if (resultLeft.hitCount !== resultRight.hitCount) {
-              return resultRight.hitCount - resultLeft.hitCount;
-            } else {
-              return resultRight.id - resultLeft.id;
-            }
-          });
-          var searchResultList = '<ul class=\"search-result-list\">';
-          resultItems.forEach(function (result) {
-            searchResultList += result.item;
-          })
-          searchResultList += "</ul>";
-          resultContent.innerHTML = searchResultList;
-        }
-      }
-
-      if ('auto' === 'auto') {
-        input.addEventListener('input', inputEventFunction);
-      } else {
-        $('.search-icon').click(inputEventFunction);
-        input.addEventListener('keypress', function (event) {
-          if (event.keyCode === 13) {
-            inputEventFunction();
-          }
-        });
-      }
-
-      // remove loading animation
-      $('body').css('overflow', '');
-
-      proceedsearch();
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        $('.sb-close').click();
-        searchFunc('local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
-
-
-      
 </body>
 </html>
