@@ -1,970 +1,1520 @@
 <!DOCTYPE html>
-<html class="full-height">
+<html>
+    <!-- title -->
+
+
+
+
 <head>
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="//cdn.bootcss.com/bulma/0.4.1/css/bulma.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-  
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/page/2/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="default">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/common.css">
-<link rel="stylesheet" href="/css/nav.css">
-<link rel="stylesheet" href="/css/layout.css">
-  
-
-</head>
-
-<body>
-  <header id="navbar" class="overflow-hidden">
-  <div class="container">
-    <nav class="nav">
-         <div class="nav-left">
-            <a href="/" class="nav-item" style="font-size: 20px;">
-              <span class="logo">UnclePig</span>'s Blog
-            </a>
-         </div>
-        <div class="nav-center is-hidden position-relative" id="search_container">
-            <div class="nav-item full-width full-height">
-                <i class="fa fa-search has-padding" aria-hidden="true"></i>
-                <input type="text" id="search_input" class="search-input full-height full-width" placeholder="Search post" autofocus>
-                <i id="close_search" class="fa fa-times" aria-hidden="true"></i>
-            </div>
-            <div id="search_result"></div>
-        </div>
-        <div class="nav-right nav-menu">
-            <a class="nav-item" id="search">
-                <i class="fa fa-search" aria-hidden="true"></i>
-            </a>
-            
-            <a class="nav-item" href="/">
-                Home
-            </a>
-            
-            <a class="nav-item" href="/works">
-                My Works
-            </a>
-            
-            <a class="nav-item" href="/about">
-                About
-            </a>
-            
-        </div>
-        <span class="nav-toggle" id="navMenuDropdown">
-            <span></span>
-            <span></span>
-            <span></span>
-        </span>
-        <div class="navbar-menu position-absolute full-width content-box is-hidden-desktop is-flex flex-column center" style="top: 100%;">
-            
-            <a class="nav-item flex-1" href="/">
-                Home
-            </a>
-            
-            <a class="nav-item flex-1" href="/works">
-                My Works
-            </a>
-            
-            <a class="nav-item flex-1" href="/about">
-                About
-            </a>
-            
-        </div>
-    </nav>
-  </div>
-</header>
-
-  <div id="main-wrap" class="position-relative" style="margin-top: 55px;">
-      <div class="main-inner-content">
-          <style>
-    .post-hover:hover {
-        box-shadow: inset 0 0 100px #000;
-        transition: box-shadow .2s;
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
+    <meta name="author" content="John Doe">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="John Doe">
+    <meta name="keywords" content="Hexo | John Doe">
+    <meta name="description" content="">
+    <meta name="Cache-Control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>fi3ework&#39;s Studio</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
     }
 
-    .sub-post-container .post-hover:hover h3 {
-        text-decoration: underline gray;
+    body {
+        margin: 0;
     }
 
-
-    .primary-item-main {
-        height: 330px;
-        background-size: cover;
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
     }
 
-    .primary-container .title,
-    .primary-container .sub-title,
-    .primary-container .post-content-text,
-    .primary-container .date {
-        color: #fff;
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
     }
 
-    .post-content-text {
-        color: #f1f1f1!important;
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s 1;
     }
 
-    .primary-container .post-hover {
-        background: black;
-    }
-
-    .content-bg-mask {
-        background: rgba(0,0,0,.4);
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
     }
 
 </style>
 
-<div style="background: #f5f8f9;">
-    <div id="main-container" class="container" style="padding-top: 20px;">
-        <div class="is-flex main-content justify-center">
-            <section class="column is-9">
-                
-<div class="primary-container content-box is-flex-desktop clear-padding bottom-line" style="margin-bottom: 25px;">
-    <div class="column  is-7-desktop">
-        <a href="/2017/06/06/Hibernate中的mappedBy和注解-JoinColumn/">
-            <div class="full-height post-hover"
-                 style="
-                         background-image: url('');
-                         height: 350px;
-                         background-size: cover;
-                         background-repeat: no-repeat;
-                         ">
-                    <div class=" is-flex flex-column center content has-text-centered full-height has-padding content-bg-mask">
-                        <h1 class="title text-shadow" style="margin-bottom: 15px;">
-                            Hibernate中的mappedBy和注解@JoinColumn
-                        </h1>
-                        <div>
-                        
-                            `
-                                <span class="tag is-post-tag">Hibernate</span>
-                            `
-                                <span class="tag is-post-tag">mappedBy</span>
-                            `
-                                <span class="tag is-post-tag">JoinColumn</span>
-                            
-                        
-                        </div>
-                        <p class="post-content-text is-marginless has-padding text-shadow">
-                            mappedBymappedBy用于指定具有双向关系的两个实体中。哪个实体是被关联处理的。
-只有OneToOne,OneToMany,ManyToMany上才有mappedBy属性，ManyToOne不存在该属性@OneToMany(m..
-                        </p>
-                        <p class="date text-shadow">2017-06-06</p>
-                        <button class="button is-info is-small">Read More</button>
-                    </div>
-            </div>
-        </a>
-    </div>
-    <div class="column is-5 is-hidden-touch" style="padding-left: 0;">
-        <div class="full-height is-flex flex-column justify-space-between" style="min-height: 350px;">
+    <link rel="preload" href= /css/style.css?v=20180709 as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="stylesheet" href= /css/mobile.css?v=20180709 media="(max-width: 980px)">
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href= "/assets/favicon.ico" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script" />
+    <link rel="preload" href="/scripts/main.js" as="script" />
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+        <!-- algolia -->
+        <script>
             
-                
-<a class="post-hover" href="/2017/06/06/Open-Session-In-View-模式/" style="height: 48.5%">
-    <div class="content is-hidden-touch full-height overflow-hidden" style="background-image: url('')">
-        <div class="content-bg-mask full-width full-height has-padding">
-            <h3 class="title is-marginless text-shadow">
-                Open Session In View 模式
-            </h3>
+            var hits = JSON.parse('{"per_page":10}')
+            var labels = JSON.parse('{"input_placeholder":"Search for Posts","hits_empty":"We did not find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}')
+
+            var algolia = {
+                applicationID: 'DNUOYHV9NO',
+                apiKey: '564fa5d9900cb44f4fa627b70824520d',
+                indexName: 'zhuzhenglongindex',
+                hits: hits,
+                labels: labels
+            }
+        </script>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+</head>
+
+    
+        <body class="home-body">
+    
+    
+<header class="header index-header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <a class="home-link" href=/>fi3ework's Studio.</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style=
+
+
+
+
+
+
+
+
+height:50vh;
+
+>
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 文章页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/index-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            fi3ework's Studio.
+            <!-- 文章页  -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
             
             
-            <span class="tag is-post-tag">Hibernate</span>
+                it's better to burn out than to fade away
             
-            <span class="tag is-post-tag">Session</span>
+            <!-- 文章页  -->
             
-            <span class="tag is-post-tag">Filter</span>
-            
-            
-            <p class="sub-title text-shadow"></p>
-            <p class="is-marginless text-shadow post-content-text">
-                什么是 Open Session In View 模式在hibernate中使用load方法时，..
-            </p>
-            <p class="date text-shadow is-marginless">2017-06-06</p>
-        </div>
-    </div>
-</a>
-            
-            
-                
-<a class="post-hover" href="/2017/06/06/使用工具类管理SessionFactory和Session/" style="height: 48.5%">
-    <div class="content is-hidden-touch full-height overflow-hidden" style="background-image: url('')">
-        <div class="content-bg-mask full-width full-height has-padding">
-            <h3 class="title is-marginless text-shadow">
-                使用工具类管理SessionFactory和Session
-            </h3>
-            
-            
-            <span class="tag is-post-tag">Hibernate</span>
-            
-            <span class="tag is-post-tag">Session</span>
-            
-            <span class="tag is-post-tag">SessionFactory</span>
-            
-            
-            <p class="sub-title text-shadow"></p>
-            <p class="is-marginless text-shadow post-content-text">
-                使用工具类管理SessionFactory和Session1234567891011121314..
-            </p>
-            <p class="date text-shadow is-marginless">2017-06-06</p>
-        </div>
-    </div>
-</a>
-            
-        </div>
-    </div>
-    <div class="column is-12 is-hidden-desktop">
-        
-        
-<a class="post-hover" href="/2017/06/06/Open-Session-In-View-模式/" style="height: 48.5%">
-    <div class="content is-hidden-touch full-height overflow-hidden" style="background-image: url('')">
-        <div class="content-bg-mask full-width full-height has-padding">
-            <h3 class="title is-marginless text-shadow">
-                Open Session In View 模式
-            </h3>
-            
-            
-            <span class="tag is-post-tag">Hibernate</span>
-            
-            <span class="tag is-post-tag">Session</span>
-            
-            <span class="tag is-post-tag">Filter</span>
-            
-            
-            <p class="sub-title text-shadow"></p>
-            <p class="is-marginless text-shadow post-content-text">
-                什么是 Open Session In View 模式在hibernate中使用load方法时，..
-            </p>
-            <p class="date text-shadow is-marginless">2017-06-06</p>
-        </div>
-    </div>
-</a>
-        
-        
-        
-<a class="post-hover" href="/2017/06/06/使用工具类管理SessionFactory和Session/" style="height: 48.5%">
-    <div class="content is-hidden-touch full-height overflow-hidden" style="background-image: url('')">
-        <div class="content-bg-mask full-width full-height has-padding">
-            <h3 class="title is-marginless text-shadow">
-                使用工具类管理SessionFactory和Session
-            </h3>
-            
-            
-            <span class="tag is-post-tag">Hibernate</span>
-            
-            <span class="tag is-post-tag">Session</span>
-            
-            <span class="tag is-post-tag">SessionFactory</span>
-            
-            
-            <p class="sub-title text-shadow"></p>
-            <p class="is-marginless text-shadow post-content-text">
-                使用工具类管理SessionFactory和Session1234567891011121314..
-            </p>
-            <p class="date text-shadow is-marginless">2017-06-06</p>
-        </div>
-    </div>
-</a>
+        </p>
+        <!-- 文章页meta -->
         
     </div>
 </div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
 
-                    
-                    
-                
-                    
-                        <div class="content-box  is-hidden-desktop" style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2017/06/06/Open-Session-In-View-模式/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>Open Session In View 模式</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">Hibernate</span>
-                                            
-                                                <span class="tag is-post-tag">Session</span>
-                                            
-                                                <span class="tag is-post-tag">Filter</span>
-                                            
-                                        </p>
-                                        <p>
-                                            什么是 Open Session In View 模式在hibernate中使用load方法时，并未把数据真正获取时就关闭了session，当我们真正想获取数据时会迫使load加载数据，而此时 session已关闭，所以就会出现异常。 比较典型的是在MVC模式中，我们在M层调用持久层获取数据时(持久层用的是load方法加载数据)，当这一调用结束时，ses..
-                                        </p>
-                                        <p>2017-06-06</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                    
-                        <div class="content-box  is-hidden-desktop" style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2017/06/06/使用工具类管理SessionFactory和Session/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>使用工具类管理SessionFactory和Session</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">Hibernate</span>
-                                            
-                                                <span class="tag is-post-tag">Session</span>
-                                            
-                                                <span class="tag is-post-tag">SessionFactory</span>
-                                            
-                                        </p>
-                                        <p>
-                                            使用工具类管理SessionFactory和Session12345678910111213141516171819202122232425import org.hibernate.HibernateException;import org.hibernate.Session;import org.hibernate.SessionFactory;imp..
-                                        </p>
-                                        <p>2017-06-06</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                    
-                        <div class="content-box  " style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2017/06/06/idea建立WebServlet遇到的问题/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>idea建立WebServlet遇到的问题</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">idea</span>
-                                            
-                                                <span class="tag is-post-tag">servlet</span>
-                                            
-                                                <span class="tag is-post-tag">Javaweb</span>
-                                            
-                                                <span class="tag is-post-tag">web.xml</span>
-                                            
-                                        </p>
-                                        <p>
-                                            直接用idea建立的web项目，其自动生成的web.xml，这样建立servlet-name等标签会报错（不支持这种做法，更提倡用注解的办法），解决办法是将web-app标签替换成以下的3.0版本1234&lt;web-app xmlns="http://java.sun.com/xml/ns/javaee"         xmlns:xsi="htt..
-                                        </p>
-                                        <p>2017-06-06</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                    
-                        <div class="content-box  " style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2017/05/31/Hibernate配置文件hibernate-cfg-xml和-hbm-xml的详细解释/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>Hibernate配置文件hibernate.cfg.xml和.hbm.xml的详细解释</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">Hibernate</span>
-                                            
-                                                <span class="tag is-post-tag">配置</span>
-                                            
-                                        </p>
-                                        <p>
-                                            什么是HibernateHibernate是一个开放源代码的对象关系映射框架，它对JDBC进行了非常轻量级的对象封装，它将POJO与数据库表建立映射关系，是一个全自动的orm框架，hibernate可以自动生成SQL语句，自动执行，使得Java程序员可以随心所欲的使用对象编程思维来操纵数据库。 Hibernate可以应用在任何使用JDBC的场合，既可以在..
-                                        </p>
-                                        <p>2017-05-31</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                    
-                        <div class="content-box  " style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2017/04/05/Theme-of-personalized/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>Next主题个性化教程</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">Hexo</span>
-                                            
-                                                <span class="tag is-post-tag">搭建博客</span>
-                                            
-                                                <span class="tag is-post-tag">Next</span>
-                                            
-                                        </p>
-                                        <p>
-                                            在右上角或者左上角实现fork me on github点击 GitHub Corners 或者 点击 GitHub Ribbons 挑选自己喜欢的样式，并复制代码。
-然后粘贴刚才复制的代码到 themes/Hexo主题文件夹/layout/导航栏定义文件 的文件中(代码放置位置自行调节)，例如 Next主题 位于 themes/next/layout/..
-                                        </p>
-                                        <p>2017-04-05</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                    
-                        <div class="content-box  " style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2017/03/17/Hexo-build-blog/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                    <div class="column is-4-desktop is-5-tablet post-avatar is-hidden-mobile"
-                                         style="margin: 10px; background-size: cover;background-image: url('http://p87bi0e6z.bkt.clouddn.com/20180504192557.png')">
-                                    </div>
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>Hexo搭建个人博客</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">Hexo</span>
-                                            
-                                                <span class="tag is-post-tag">搭建博客</span>
-                                            
-                                        </p>
-                                        <p>
-                                            准备工作了解HexoHexo是高效的静态站点生成框架，她基于Node.js。 通过 Hexo 你可以轻松地使用 Markdown 编写文章，除了 Markdown 本身的语法之外，还可以使用 Hexo 提供的标签插件来快速的插入特定形式的内容，而且相对于其他框架，Hexo在速度上也有很大优势。
-搭建Node.js环境我们了解到Hexo基于Node.js的..
-                                        </p>
-                                        <p>2017-03-17</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                    
-                        <div class="content-box  " style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2016/11/12/Java集合总结/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>Java集合总结</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">Java</span>
-                                            
-                                                <span class="tag is-post-tag">集合</span>
-                                            
-                                        </p>
-                                        <p>
-                                            Java集合类型123456//Java导包import java.util.List;import java.util.ArrayList;import java.util.Map;import java.util.HashMap;import java.util.Hashtable;
-泛型集合前面的都是接口1234567891011 /** * 泛型..
-                                        </p>
-                                        <p>2016-11-12</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                    
-                        <div class="content-box  " style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2016/10/22/如何解决JavaScript中0-1-0-2不等于0-3/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>如何解决JavaScript中0.1+0.2不等于0.3</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">JavaScript</span>
-                                            
-                                        </p>
-                                        <p>
-                                            如何解决JavaScript中0.1+0.2不等于0.31console.log(0.1+0.2===0.3);    //true or false?
-在正常的数学逻辑思维中，0.1+0.2=0.3这个逻辑是正确的，但是在JavaScript中0.1+0.2!==0.3，这是为什么呢？这个问题也会偶尔被用来当做面试题来考查面试者对JavaScript的..
-                                        </p>
-                                        <p>2016-10-22</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                    
-                        <div class="content-box  " style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2016/09/18/Markdown-Syntax-API/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>Markdown 语法 API</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">API</span>
-                                            
-                                                <span class="tag is-post-tag">Markdown</span>
-                                            
-                                        </p>
-                                        <p>
-                                            Markdown：语法概观
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main index-page">
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2017/06/06/Hibernate中的mappedBy和注解-JoinColumn/" >
+            
+                <span>Hibernate中的mappedBy和注解@JoinColumn</span>
+        </a>
+        <div class="abstract-content">
+            mappedBymappedBy用于指定具有双向关系的两个实体中。哪个实体是被关联处理的。
+只有OneToOne,OneToMany,ManyToMany上才有mappedBy属性，ManyToOne不存在该属性@OneToMany(mappedBy=“由One的一方指向Many的一方，并且，这个属性应该等于Many的一方中含有One类的属性的对象名，否则会出错”)关系的拥有方(Many的一方)负责关系的维护，在拥有方建立外键。所以用到@JoinColumn12345678910111213141516import javax.persistence.*;import java.util...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2017/06/06</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Hibernate">Hibernate</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "mappedBy">mappedBy</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "JoinColumn">JoinColumn</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2017/06/06/Open-Session-In-View-模式/" >
+            
+                <span>Open Session In View 模式</span>
+        </a>
+        <div class="abstract-content">
+            什么是 Open Session In View 模式在hibernate中使用load方法时，并未把数据真正获取时就关闭了session，当我们真正想获取数据时会迫使load加载数据，而此时 session已关闭，所以就会出现异常。 比较典型的是在MVC模式中，我们在M层调用持久层获取数据时(持久层用的是load方法加载数据)，当这一调用结束时，session随之关闭，而我们 希望在V层使用这些数据，这时才会迫使load加载数据，我们就希望这时的session是open着得，这就是所谓的Open Session In view 。 我们可以filter来达到此目的
+OpenSessti...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2017/06/06</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Hibernate">Hibernate</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Session">Session</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Filter">Filter</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2017/06/06/使用工具类管理SessionFactory和Session/" >
+            
+                <span>使用工具类管理SessionFactory和Session</span>
+        </a>
+        <div class="abstract-content">
+            使用工具类管理SessionFactory和Session12345678910111213141516171819202122232425import org.hibernate.HibernateException;import org.hibernate.Session;import org.hibernate.SessionFactory;import org.hibernate.cfg.Configuration;public class HibernateUtil &#123;    private static Configuration configuration;   ...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2017/06/06</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Hibernate">Hibernate</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Session">Session</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "SessionFactory">SessionFactory</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2017/06/06/idea建立WebServlet遇到的问题/" >
+            
+                <span>idea建立WebServlet遇到的问题</span>
+        </a>
+        <div class="abstract-content">
+            直接用idea建立的web项目，其自动生成的web.xml，这样建立servlet-name等标签会报错（不支持这种做法，更提倡用注解的办法），解决办法是将web-app标签替换成以下的3.0版本1234&lt;web-app xmlns="http://java.sun.com/xml/ns/javaee"         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.c...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2017/06/06</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "idea">idea</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "servlet">servlet</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Javaweb">Javaweb</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "web.xml">web.xml</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2017/05/31/Hibernate配置文件hibernate-cfg-xml和-hbm-xml的详细解释/" >
+            
+                <span>Hibernate配置文件hibernate.cfg.xml和.hbm.xml的详细解释</span>
+        </a>
+        <div class="abstract-content">
+            什么是HibernateHibernate是一个开放源代码的对象关系映射框架，它对JDBC进行了非常轻量级的对象封装，它将POJO与数据库表建立映射关系，是一个全自动的orm框架，hibernate可以自动生成SQL语句，自动执行，使得Java程序员可以随心所欲的使用对象编程思维来操纵数据库。 Hibernate可以应用在任何使用JDBC的场合，既可以在Java的客户端程序使用，也可以在Servlet/JSP的Web应用中使用，最具革命意义的是，Hibernate可以在应用EJB的J2EE架构中取代CMP，完成数据持久化的重任。
+Hibernate配置文件hibernate.cfg.xm...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2017/05/31</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Hibernate">Hibernate</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "配置">配置</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2017/04/05/Theme-of-personalized/" >
+            
+                <span>Next主题个性化教程</span>
+        </a>
+        <div class="abstract-content">
+            在右上角或者左上角实现fork me on github点击 GitHub Corners 或者 点击 GitHub Ribbons 挑选自己喜欢的样式，并复制代码。
+然后粘贴刚才复制的代码到 themes/Hexo主题文件夹/layout/导航栏定义文件 的文件中(代码放置位置自行调节)，例如 Next主题 位于 themes/next/layout/_layout.swig 并把href改为你的GitHub地址
+添加 README.md 文件每个项目下一般都有一个 README.md 文件，但是使用 Hexo 部署到仓库后，项目下是没有 README.md 文件的。
+在 Hexo 目...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2017/04/05</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Hexo">Hexo</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "搭建博客">搭建博客</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Next">Next</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2017/03/17/Hexo-build-blog/" >
+            
+                <span>Hexo搭建个人博客</span>
+        </a>
+        <div class="abstract-content">
+            准备工作了解HexoHexo是高效的静态站点生成框架，她基于Node.js。 通过 Hexo 你可以轻松地使用 Markdown 编写文章，除了 Markdown 本身的语法之外，还可以使用 Hexo 提供的标签插件来快速的插入特定形式的内容，而且相对于其他框架，Hexo在速度上也有很大优势。
+搭建Node.js环境我们了解到Hexo基于Node.js的，那么我们搭建博客网站首先需要安装Node.js环境。 Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境，可以在非浏览器环境下，解释运行 JS 代码。
+点击下载 Node.js
+测试安装：命令行使用 ...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2017/03/17</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Hexo">Hexo</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "搭建博客">搭建博客</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2016/11/12/Java集合总结/" >
+            
+                <span>Java集合总结</span>
+        </a>
+        <div class="abstract-content">
+            Java集合类型123456//Java导包import java.util.List;import java.util.ArrayList;import java.util.Map;import java.util.HashMap;import java.util.Hashtable;
+泛型集合前面的都是接口1234567891011 /** * 泛型集合 */List&lt;String&gt; list = new ArrayList&lt;String&gt;();/** * K键泛型集合 */Map&lt;Integer, String&gt; map = new HashMa...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2016/11/12</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Java">Java</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "集合">集合</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2016/10/22/如何解决JavaScript中0-1-0-2不等于0-3/" >
+            
+                <span>如何解决JavaScript中0.1+0.2不等于0.3</span>
+        </a>
+        <div class="abstract-content">
+            如何解决JavaScript中0.1+0.2不等于0.31console.log(0.1+0.2===0.3);    //true or false?
+在正常的数学逻辑思维中，0.1+0.2=0.3这个逻辑是正确的，但是在JavaScript中0.1+0.2!==0.3，这是为什么呢？这个问题也会偶尔被用来当做面试题来考查面试者对JavaScript的数值的理解程度
+在JavaScript中的二进制的浮点数0.1和0.2并不是十分精确，在他们相加的结果并非正好等于0.3，而是一个比较接近的数字 0.30000000000000004 ，所以条件判断结果为 false
+那么应该怎样来解决...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2016/10/22</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "JavaScript">JavaScript</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2016/09/18/Markdown-Syntax-API/" >
+            
+                <span>Markdown 语法 API</span>
+        </a>
+        <div class="abstract-content">
+            Markdown：语法概观
 
 哲学
 
 Markdown旨在尽可能易于阅读和易于编写。
-但是，可读性强调一切。Markdown格式的文档应该以纯文本的形式发布，而不会看起来像标签或格式化指令。尽管Markdown的语法受到了几种现有的文本到HTML过滤器的影响，包括 Setext， atx， Textile， reStructuredText，Grutat..
-                                        </p>
-                                        <p>2016-09-18</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                <!--翻頁-->
-                <nav class="pagination is-flex" style="justify-content: flex-end">
-                    
-                        
-                            <a class="pagination-previous" href="/">Previous</a>
-                        
-                        
-                    
-                </nav>
-            </section>
-            
-                <style>
-    /*user info start*/
-    .user-info {
-        padding: 15px 0 0;
-    }
-
-    .user-info .avatar {
-        width: 155px;
-        height: 155px;
-        border-radius: 50%;
-    }
-
-    .sns-container {
-        flex-wrap: wrap;
-    }
-
-    .sns-container a{
-        color: black;
-    }
-    /*user info end*/
-
-    /*Tag start*/
-    #tag_cloud .tags-item{
-        display: inline-block;
-        color: #000;
-        border: 1px solid gray;
-
-        margin: 4px 2px;
-        padding: 0 4px;
-        border-radius: 6px;
-    }
-    /*Tag end*/
-
-    /*Site box start*/
-    .site-box {
-        height: 60px;
-    }
-    /*Site box end*/
-
-    .category-list-item,
-    .archive-list-item {
-        display: flex;
-        margin-bottom: 4px;
-        justify-content: space-between;
-    }
-    .category-list-link,
-    .archive-list-link {
-        color: black;
-    }
-
-    .category-list-count,
-    .archive-list-count {
-        width: 32px;
-        text-align: center;
-        border-radius: 4px;
-        color: #fff;
-        background-color: gray;
-    }
-</style>
-<aside class="column is-hidden-touch is-3" style="max-width: 280px; min-width: 230px">
-    <div class="content-box user-info">
-        <div class="has-padding">
-            <header class="has-text-centered">
-                <img class="avatar" src="https://cdn2.iconfinder.com/data/icons/rcons-user/32/male-shadow-circle-512.png">
-            </header>
-            <section class="has-text-centered">
-                <h3><strong>UnclePig</strong></h3>
-                <p class="sub-title">A Touch Of Zen</p>
-                
-                <p class="is-flex center" style=" color: gray">
-                    <i class="fa fa-map-marker" style="padding: 5px"></i>
-                    China
-                </p>
-                
-            </section>
+但是，可读性强调一切。Markdown格式的文档应该以纯文本的形式发布，而不会看起来像标签或格式化指令。尽管Markdown的语法受到了几种现有的文本到HTML过滤器的影响，包括 Setext， atx， Textile， reStructuredText，Grutatext， 和 EtText ，Markdown语法的最大灵感来源是纯文本电子邮件的格式。
+为此，Markdown的语法完全由标点字符组成，标点字符经过仔细选择以便看起来像他们的意思。 例如，一个词的星号实际上看起来像 *强调*。 Mark...
         </div>
-        <div class="top-line">
-            <ul class="sns-container justify-center is-flex has-padding">
-                
-
-                
-                <li>
-                    <a target="_blank" href="https://twitter.com/ehazon">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                                        </span>
-                    </a>
-                </li>
-                
-
-                
-                <li>
-                    <a target="_blank" href="https://www.zhihu.com/people/margretz">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa  fa-stack-1x fa-inverse">知</i>
-                                        </span>
-                    </a>
-                </li>
-                
-
-                
-
-                
-
-                
-                <li>
-                    <a target="_blank" href="https://github.com/haojen">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                        </span>
-                    </a>
-                </li>
-                
-
-                
-            </ul>
-        </div>
-    </div>
-    <div class="content-box">
-        <!--post数量和tag category 数量-->
-        <div class="site-box is-flex">
-            <div class="flex-1 is-flex flex-column center full-height right-line">
-                <strong>20</strong>
-                <p>Posts</p>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2016/09/18</span>
             </div>
-            <div class="flex-1 is-flex flex-column center full-height">
-                <strong>46</strong>
-                <p>Tags</p>
-            </div>
-        </div>
-    </div>
-    <div id='tag_cloud' class="content-inner content-box">
-        <div class="has-text-centered">
-            <strong>Tags</strong>
-        </div>
-        <div class="content-inner is-flex flex-wrap justify-space-between">
+            <!-- tags  -->
             
-                <a class="tags-item" href="tags/Hexo/" title="Hexo" rel="2">
-                    Hexo
-                </a>
-            
-                <a class="tags-item" href="tags/搭建博客/" title="搭建博客" rel="2">
-                    搭建博客
-                </a>
-            
-                <a class="tags-item" href="tags/Hibernate/" title="Hibernate" rel="7">
-                    Hibernate
-                </a>
-            
-                <a class="tags-item" href="tags/increment/" title="increment" rel="1">
-                    increment
-                </a>
-            
-                <a class="tags-item" href="tags/idea/" title="idea" rel="8">
-                    idea
-                </a>
-            
-                <a class="tags-item" href="tags/Oracle/" title="Oracle" rel="1">
-                    Oracle
-                </a>
-            
-                <a class="tags-item" href="tags/多对多/" title="多对多" rel="2">
-                    多对多
-                </a>
-            
-                <a class="tags-item" href="tags/一对多/" title="一对多" rel="2">
-                    一对多
-                </a>
-            
-                <a class="tags-item" href="tags/多对一/" title="多对一" rel="2">
-                    多对一
-                </a>
-            
-                <a class="tags-item" href="tags/many-to-many/" title="many-to-many" rel="1">
-                    many-to-many
-                </a>
-            
-                <a class="tags-item" href="tags/many-to-one/" title="many-to-one" rel="1">
-                    many-to-one
-                </a>
-            
-                <a class="tags-item" href="tags/one-to-many/" title="one-to-many" rel="1">
-                    one-to-many
-                </a>
-            
-                <a class="tags-item" href="tags/关系映射/" title="关系映射" rel="2">
-                    关系映射
-                </a>
-            
-                <a class="tags-item" href="tags/配置/" title="配置" rel="1">
-                    配置
-                </a>
-            
-                <a class="tags-item" href="tags/Java/" title="Java" rel="3">
-                    Java
-                </a>
-            
-                <a class="tags-item" href="tags/继承/" title="继承" rel="1">
-                    继承
-                </a>
-            
-                <a class="tags-item" href="tags/多态/" title="多态" rel="1">
-                    多态
-                </a>
-            
-                <a class="tags-item" href="tags/extends/" title="extends" rel="1">
-                    extends
-                </a>
-            
-                <a class="tags-item" href="tags/重写/" title="重写" rel="1">
-                    重写
-                </a>
-            
-                <a class="tags-item" href="tags/mappedBy/" title="mappedBy" rel="1">
-                    mappedBy
-                </a>
-            
-                <a class="tags-item" href="tags/JoinColumn/" title="JoinColumn" rel="1">
-                    JoinColumn
-                </a>
-            
-                <a class="tags-item" href="tags/集合/" title="集合" rel="1">
-                    集合
-                </a>
-            
-                <a class="tags-item" href="tags/主键/" title="主键" rel="1">
-                    主键
-                </a>
-            
-                <a class="tags-item" href="tags/API/" title="API" rel="1">
-                    API
-                </a>
-            
-                <a class="tags-item" href="tags/Markdown/" title="Markdown" rel="1">
-                    Markdown
-                </a>
-            
-                <a class="tags-item" href="tags/MyBatis/" title="MyBatis" rel="2">
-                    MyBatis
-                </a>
-            
-                <a class="tags-item" href="tags/MySQL/" title="MySQL" rel="2">
-                    MySQL
-                </a>
-            
-                <a class="tags-item" href="tags/配置文件/" title="配置文件" rel="1">
-                    配置文件
-                </a>
-            
-                <a class="tags-item" href="tags/一对一/" title="一对一" rel="1">
-                    一对一
-                </a>
-            
-                <a class="tags-item" href="tags/动态SQL/" title="动态SQL" rel="1">
-                    动态SQL
-                </a>
-            
-                <a class="tags-item" href="tags/映射配置/" title="映射配置" rel="1">
-                    映射配置
-                </a>
-            
-                <a class="tags-item" href="tags/Session/" title="Session" rel="2">
-                    Session
-                </a>
-            
-                <a class="tags-item" href="tags/Filter/" title="Filter" rel="1">
-                    Filter
-                </a>
-            
-                <a class="tags-item" href="tags/OGNL/" title="OGNL" rel="2">
-                    OGNL
-                </a>
-            
-                <a class="tags-item" href="tags/自定义转换器/" title="自定义转换器" rel="1">
-                    自定义转换器
-                </a>
-            
-                <a class="tags-item" href="tags/Struts2/" title="Struts2" rel="4">
-                    Struts2
-                </a>
-            
-                <a class="tags-item" href="tags/Action/" title="Action" rel="1">
-                    Action
-                </a>
-            
-                <a class="tags-item" href="tags/传值/" title="传值" rel="1">
-                    传值
-                </a>
-            
-                <a class="tags-item" href="tags/拦截器/" title="拦截器" rel="1">
-                    拦截器
-                </a>
-            
-                <a class="tags-item" href="tags/Interceptor/" title="Interceptor" rel="1">
-                    Interceptor
-                </a>
-            
-                <a class="tags-item" href="tags/servlet/" title="servlet" rel="2">
-                    servlet
-                </a>
-            
-                <a class="tags-item" href="tags/Next/" title="Next" rel="1">
-                    Next
-                </a>
-            
-                <a class="tags-item" href="tags/SessionFactory/" title="SessionFactory" rel="1">
-                    SessionFactory
-                </a>
-            
-                <a class="tags-item" href="tags/Javaweb/" title="Javaweb" rel="1">
-                    Javaweb
-                </a>
-            
-                <a class="tags-item" href="tags/web-xml/" title="web.xml" rel="1">
-                    web.xml
-                </a>
-            
-                <a class="tags-item" href="tags/JavaScript/" title="JavaScript" rel="1">
-                    JavaScript
-                </a>
-            
-        </div>
-    </div>
-    <div class="content-inner content-box">
-        <div class="has-text-centered">
-            <strong>Categories</strong>
-        </div>
-        <div class="content-inner">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/API/">API</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hibernate/">Hibernate</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyBatis/">MyBatis</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Struts2/">Struts2</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/idea/">idea</a><span class="category-list-count">1</span></li></ul>
-        </div>
-    </div>
-    <div class="content-inner content-box">
-        <div class="has-text-centered">
-            <strong>Archives</strong>
-        </div>
-        <div class="content-inner">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">1</span></li></ul>
-        </div>
-    </div>
-</aside>
-            
-        </div>
-    </div>
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "API">API</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Markdown">Markdown</a>
+    
 </div>
+            
+        </div>
+    </article>
+    
+    <!-- paginator  -->
+    
+    <nav class="page-nav">
+        <a class="extend prev" rel="prev" href="/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    </nav>
+    
+</main>
+            <!-- profile -->
+            
+            <div class="profile">
+    <img class="profile-avatar" src= /avatar/Misaka.jpg >
+    <div class="profile-name">fi3ework</div>
+    
+    <div class="profile-signature">
+        witness me
+    </div>
+    
+    
+    <div class="profile-social">
+        
+    
+        
+            
+                <a href="mailto:12345@qq.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/fi3ework" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                  
+                  <img class="profile-qr" src="/assets/example_qr.png" />
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
 
-      </div>
-  </div>
-  <style>
-  #footer {
-    min-height: 10vh;
-    background: black;
-    color: #fff;
-  }
+    </div>
+    
+    
+        <div class="friends">
+            <div>FRIENDS</div>
+            
+                
+                    <span>
+                        <a href= //www.baidu.com target="_black">friendA</a>
+                    </span>
+                
+            
+                
+                    <span>
+                        <a href= //www.google.com target="_black">friendB</a>
+                    </span>
+                
+            
+                
+            
+        </div>
+    
+    
+        <div class="about-me">
+            <a href = "/about" >ABOUT ME</a>
+        </div>
+    
+</div>
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:12345@qq.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/fi3ework" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                  
+                  <img class="profile-qr" src="/assets/example_qr.png" />
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
 
-  #footer a {
-    color: #e1e1e1;
-  }
-</style>
-<footer id="footer" class="has-text-centered is-flex center">
-  <div class="container has-padding">
-    <div>
-      <div>
-        <!--请您保留作者署名, 主题制作来之不易-->
-        Theme by <a href="http://haojen.github.io/">Haojen Ma</a>
-        <br>
-        Copyright © John Doe 2018
-        <br>
-        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-      </div>
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 20
+        </div>
+        <!-- search  -->
+        
+            <div class="site-search popup-trigger">
+                <span class="iconfont-archer search-icon">&#xe627;</span>
+            </div>
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/05</span><a class="archive-post-title" href= "/2018/04/05/MyBatis-映射配置解析以及动态SQL配置案例/" >MyBatis 映射配置解析以及动态SQL配置案例</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/03</span><a class="archive-post-title" href= "/2018/04/03/MyBatis框架映射文件配置以及配置文件详解/" >MyBatis框架映射文件配置以及配置文件详解</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2017 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/28</span><a class="archive-post-title" href= "/2017/10/28/Hibernate-多对多-一对多-多对一-配置解析案例/" >Hibernate 多对多 一对多 多对一  配置解析案例</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/28</span><a class="archive-post-title" href= "/2017/09/28/Hibernate-主键-ID-生成方式/" >Hibernate 主键 ID 生成方式</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/04</span><a class="archive-post-title" href= "/2017/07/04/Java中继承与多态实例/" >Java中继承与多态实例</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/29</span><a class="archive-post-title" href= "/2017/06/29/Struts2如何在Action与JSP之间传值/" >Struts2如何在Action与JSP之间传值</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/18</span><a class="archive-post-title" href= "/2017/06/18/Hibernate主键自增长increment/" >Hibernate主键自增长increment</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/14</span><a class="archive-post-title" href= "/2017/06/14/Struts2拦截器实现用户访问控制/" >Struts2拦截器实现用户访问控制</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/12</span><a class="archive-post-title" href= "/2017/06/12/OGNL创建和配置自定义日期类型转换器/" >OGNL创建和配置自定义日期类型转换器</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/07</span><a class="archive-post-title" href= "/2017/06/07/Struts2的配置和一个简单的例子/" >Struts2的配置和一个简单的例子</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/06</span><a class="archive-post-title" href= "/2017/06/06/Hibernate中的mappedBy和注解-JoinColumn/" >Hibernate中的mappedBy和注解@JoinColumn</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/06</span><a class="archive-post-title" href= "/2017/06/06/Open-Session-In-View-模式/" >Open Session In View 模式</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/06</span><a class="archive-post-title" href= "/2017/06/06/使用工具类管理SessionFactory和Session/" >使用工具类管理SessionFactory和Session</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/06</span><a class="archive-post-title" href= "/2017/06/06/idea建立WebServlet遇到的问题/" >idea建立WebServlet遇到的问题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/31</span><a class="archive-post-title" href= "/2017/05/31/Hibernate配置文件hibernate-cfg-xml和-hbm-xml的详细解释/" >Hibernate配置文件hibernate.cfg.xml和.hbm.xml的详细解释</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/05</span><a class="archive-post-title" href= "/2017/04/05/Theme-of-personalized/" >Next主题个性化教程</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/17</span><a class="archive-post-title" href= "/2017/03/17/Hexo-build-blog/" >Hexo搭建个人博客</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2016 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/12</span><a class="archive-post-title" href= "/2016/11/12/Java集合总结/" >Java集合总结</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/22</span><a class="archive-post-title" href= "/2016/10/22/如何解决JavaScript中0-1-0-2不等于0-3/" >如何解决JavaScript中0.1+0.2不等于0.3</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/18</span><a class="archive-post-title" href= "/2016/09/18/Markdown-Syntax-API/" >Markdown 语法 API</a>
+        </li>
+    
     </div>
   </div>
-</footer>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="Hibernate"><span class="iconfont-archer">&#xe606;</span>Hibernate</span>
+    
+        <span class="sidebar-tag-name" data-tags="mappedBy"><span class="iconfont-archer">&#xe606;</span>mappedBy</span>
+    
+        <span class="sidebar-tag-name" data-tags="JoinColumn"><span class="iconfont-archer">&#xe606;</span>JoinColumn</span>
+    
+        <span class="sidebar-tag-name" data-tags="主键"><span class="iconfont-archer">&#xe606;</span>主键</span>
+    
+        <span class="sidebar-tag-name" data-tags="increment"><span class="iconfont-archer">&#xe606;</span>increment</span>
+    
+        <span class="sidebar-tag-name" data-tags="Hexo"><span class="iconfont-archer">&#xe606;</span>Hexo</span>
+    
+        <span class="sidebar-tag-name" data-tags="搭建博客"><span class="iconfont-archer">&#xe606;</span>搭建博客</span>
+    
+        <span class="sidebar-tag-name" data-tags="Java"><span class="iconfont-archer">&#xe606;</span>Java</span>
+    
+        <span class="sidebar-tag-name" data-tags="继承"><span class="iconfont-archer">&#xe606;</span>继承</span>
+    
+        <span class="sidebar-tag-name" data-tags="多态"><span class="iconfont-archer">&#xe606;</span>多态</span>
+    
+        <span class="sidebar-tag-name" data-tags="extends"><span class="iconfont-archer">&#xe606;</span>extends</span>
+    
+        <span class="sidebar-tag-name" data-tags="重写"><span class="iconfont-archer">&#xe606;</span>重写</span>
+    
+        <span class="sidebar-tag-name" data-tags="idea"><span class="iconfont-archer">&#xe606;</span>idea</span>
+    
+        <span class="sidebar-tag-name" data-tags="Oracle"><span class="iconfont-archer">&#xe606;</span>Oracle</span>
+    
+        <span class="sidebar-tag-name" data-tags="多对多"><span class="iconfont-archer">&#xe606;</span>多对多</span>
+    
+        <span class="sidebar-tag-name" data-tags="一对多"><span class="iconfont-archer">&#xe606;</span>一对多</span>
+    
+        <span class="sidebar-tag-name" data-tags="多对一"><span class="iconfont-archer">&#xe606;</span>多对一</span>
+    
+        <span class="sidebar-tag-name" data-tags="many-to-many"><span class="iconfont-archer">&#xe606;</span>many-to-many</span>
+    
+        <span class="sidebar-tag-name" data-tags="many-to-one"><span class="iconfont-archer">&#xe606;</span>many-to-one</span>
+    
+        <span class="sidebar-tag-name" data-tags="one-to-many"><span class="iconfont-archer">&#xe606;</span>one-to-many</span>
+    
+        <span class="sidebar-tag-name" data-tags="关系映射"><span class="iconfont-archer">&#xe606;</span>关系映射</span>
+    
+        <span class="sidebar-tag-name" data-tags="集合"><span class="iconfont-archer">&#xe606;</span>集合</span>
+    
+        <span class="sidebar-tag-name" data-tags="API"><span class="iconfont-archer">&#xe606;</span>API</span>
+    
+        <span class="sidebar-tag-name" data-tags="Markdown"><span class="iconfont-archer">&#xe606;</span>Markdown</span>
+    
+        <span class="sidebar-tag-name" data-tags="MySQL"><span class="iconfont-archer">&#xe606;</span>MySQL</span>
+    
+        <span class="sidebar-tag-name" data-tags="MyBatis"><span class="iconfont-archer">&#xe606;</span>MyBatis</span>
+    
+        <span class="sidebar-tag-name" data-tags="一对一"><span class="iconfont-archer">&#xe606;</span>一对一</span>
+    
+        <span class="sidebar-tag-name" data-tags="动态SQL"><span class="iconfont-archer">&#xe606;</span>动态SQL</span>
+    
+        <span class="sidebar-tag-name" data-tags="映射配置"><span class="iconfont-archer">&#xe606;</span>映射配置</span>
+    
+        <span class="sidebar-tag-name" data-tags="配置"><span class="iconfont-archer">&#xe606;</span>配置</span>
+    
+        <span class="sidebar-tag-name" data-tags="Session"><span class="iconfont-archer">&#xe606;</span>Session</span>
+    
+        <span class="sidebar-tag-name" data-tags="Filter"><span class="iconfont-archer">&#xe606;</span>Filter</span>
+    
+        <span class="sidebar-tag-name" data-tags="配置文件"><span class="iconfont-archer">&#xe606;</span>配置文件</span>
+    
+        <span class="sidebar-tag-name" data-tags="OGNL"><span class="iconfont-archer">&#xe606;</span>OGNL</span>
+    
+        <span class="sidebar-tag-name" data-tags="自定义转换器"><span class="iconfont-archer">&#xe606;</span>自定义转换器</span>
+    
+        <span class="sidebar-tag-name" data-tags="Struts2"><span class="iconfont-archer">&#xe606;</span>Struts2</span>
+    
+        <span class="sidebar-tag-name" data-tags="Action"><span class="iconfont-archer">&#xe606;</span>Action</span>
+    
+        <span class="sidebar-tag-name" data-tags="传值"><span class="iconfont-archer">&#xe606;</span>传值</span>
+    
+        <span class="sidebar-tag-name" data-tags="拦截器"><span class="iconfont-archer">&#xe606;</span>拦截器</span>
+    
+        <span class="sidebar-tag-name" data-tags="Interceptor"><span class="iconfont-archer">&#xe606;</span>Interceptor</span>
+    
+        <span class="sidebar-tag-name" data-tags="servlet"><span class="iconfont-archer">&#xe606;</span>servlet</span>
+    
+        <span class="sidebar-tag-name" data-tags="Next"><span class="iconfont-archer">&#xe606;</span>Next</span>
+    
+        <span class="sidebar-tag-name" data-tags="Javaweb"><span class="iconfont-archer">&#xe606;</span>Javaweb</span>
+    
+        <span class="sidebar-tag-name" data-tags="web.xml"><span class="iconfont-archer">&#xe606;</span>web.xml</span>
+    
+        <span class="sidebar-tag-name" data-tags="SessionFactory"><span class="iconfont-archer">&#xe606;</span>SessionFactory</span>
+    
+        <span class="sidebar-tag-name" data-tags="JavaScript"><span class="iconfont-archer">&#xe606;</span>JavaScript</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="Hibernate"><span class="iconfont-archer">&#xe60a;</span>Hibernate</span>
+    
+        <span class="sidebar-category-name" data-categories="Hexo"><span class="iconfont-archer">&#xe60a;</span>Hexo</span>
+    
+        <span class="sidebar-category-name" data-categories="Hibernate/注解"><span class="iconfont-archer">&#xe60a;</span>Hibernate/注解</span>
+    
+        <span class="sidebar-category-name" data-categories="Java"><span class="iconfont-archer">&#xe60a;</span>Java</span>
+    
+        <span class="sidebar-category-name" data-categories="Hibernate/关系映射"><span class="iconfont-archer">&#xe60a;</span>Hibernate/关系映射</span>
+    
+        <span class="sidebar-category-name" data-categories="Hibernate/XML"><span class="iconfont-archer">&#xe60a;</span>Hibernate/XML</span>
+    
+        <span class="sidebar-category-name" data-categories="API"><span class="iconfont-archer">&#xe60a;</span>API</span>
+    
+        <span class="sidebar-category-name" data-categories="Hibernate/increment"><span class="iconfont-archer">&#xe60a;</span>Hibernate/increment</span>
+    
+        <span class="sidebar-category-name" data-categories="MyBatis"><span class="iconfont-archer">&#xe60a;</span>MyBatis</span>
+    
+        <span class="sidebar-category-name" data-categories="Hibernate/Session"><span class="iconfont-archer">&#xe60a;</span>Hibernate/Session</span>
+    
+        <span class="sidebar-category-name" data-categories="Struts2"><span class="iconfont-archer">&#xe60a;</span>Struts2</span>
+    
+        <span class="sidebar-category-name" data-categories="Java/extends"><span class="iconfont-archer">&#xe60a;</span>Java/extends</span>
+    
+        <span class="sidebar-category-name" data-categories="Hexo/Next"><span class="iconfont-archer">&#xe60a;</span>Hexo/Next</span>
+    
+        <span class="sidebar-category-name" data-categories="idea"><span class="iconfont-archer">&#xe60a;</span>idea</span>
+    
+        <span class="sidebar-category-name" data-categories="Hibernate/XML/主键"><span class="iconfont-archer">&#xe60a;</span>Hibernate/XML/主键</span>
+    
+        <span class="sidebar-category-name" data-categories="JavaScript"><span class="iconfont-archer">&#xe60a;</span>JavaScript</span>
+    
+        <span class="sidebar-category-name" data-categories="Java/集合"><span class="iconfont-archer">&#xe60a;</span>Java/集合</span>
+    
+        <span class="sidebar-category-name" data-categories="API/Markdown"><span class="iconfont-archer">&#xe60a;</span>API/Markdown</span>
+    
+        <span class="sidebar-category-name" data-categories="MyBatis/XML"><span class="iconfont-archer">&#xe60a;</span>MyBatis/XML</span>
+    
+        <span class="sidebar-category-name" data-categories="Hibernate/Session/Filter"><span class="iconfont-archer">&#xe60a;</span>Hibernate/Session/Filter</span>
+    
+        <span class="sidebar-category-name" data-categories="MyBatis/MySQL"><span class="iconfont-archer">&#xe60a;</span>MyBatis/MySQL</span>
+    
+        <span class="sidebar-category-name" data-categories="Struts2/OGNL"><span class="iconfont-archer">&#xe60a;</span>Struts2/OGNL</span>
+    
+        <span class="sidebar-category-name" data-categories="Struts2/Action"><span class="iconfont-archer">&#xe60a;</span>Struts2/Action</span>
+    
+        <span class="sidebar-category-name" data-categories="Struts2/idea"><span class="iconfont-archer">&#xe60a;</span>Struts2/idea</span>
+    
+        <span class="sidebar-category-name" data-categories="idea/web-xml"><span class="iconfont-archer">&#xe60a;</span>idea/web-xml</span>
+    
+        <span class="sidebar-category-name" data-categories="MyBatis/XML/映射配置"><span class="iconfont-archer">&#xe60a;</span>MyBatis/XML/映射配置</span>
+    
+        <span class="sidebar-category-name" data-categories="Struts2/OGNL/自定义转换器"><span class="iconfont-archer">&#xe60a;</span>Struts2/OGNL/自定义转换器</span>
+    
+        <span class="sidebar-category-name" data-categories="Struts2/idea/Interceptor"><span class="iconfont-archer">&#xe60a;</span>Struts2/idea/Interceptor</span>
+    
+        <span class="sidebar-category-name" data-categories="MyBatis/XML/映射配置/动态SQL"><span class="iconfont-archer">&#xe60a;</span>MyBatis/XML/映射配置/动态SQL</span>
+    
+        <span class="sidebar-category-name" data-categories="Struts2/idea/Interceptor/AbstractInterceptor"><span class="iconfont-archer">&#xe60a;</span>Struts2/idea/Interceptor/AbstractInterceptor</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "John Doe"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+        <div class="site-search">
+  <div class="algolia-popup popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
 
-<script src="/js/search_core.js"></script>
-<script src="/js/script.js"></script>
- <section class="livere" id="comments">
- <!-- 来必力City版安装代码 -->
-                <div id="lv-container" data-id="city" data-uid="MTAyMC8zNzkyNy8xNDQ1Nw==">
-                    <script type="text/javascript">
-                        (function(d, s) {
-                            var j, e = d.getElementsByTagName(s)[0];
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
 
-                            if (typeof LivereTower === 'function') { return; }
-
-                            j = d.createElement(s);
-                            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-                            j.async = true;
-
-                            e.parentNode.insertBefore(j, e);
-                        })(document, 'script');
-                    </script>
-                    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
-                </div>
- <!-- City版安装代码已完成 -->
- </section>
-</body>
+    <span class="popup-btn-close">
+      <i class="iconfont-archer">&#xe609;</i>
+    </span>
+  </div>
+</div>
+        <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.8.0/dist/instantsearch.min.js" defer></script>
+        <script src="/scripts/search.js" defer></script>
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+     
+    </body>
 </html>
+
+
