@@ -47,9 +47,9 @@
         <category>关系映射</category>
       </categories>
       <tags>
+        <tag>Hibernate</tag>
         <tag>idea</tag>
         <tag>Oracle</tag>
-        <tag>Hibernate</tag>
         <tag>多对多</tag>
         <tag>一对多</tag>
         <tag>多对一</tag>
