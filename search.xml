@@ -99,8 +99,8 @@
       </categories>
       <tags>
         <tag>idea</tag>
-        <tag>Struts2</tag>
         <tag>OGNL</tag>
+        <tag>Struts2</tag>
         <tag>Action</tag>
         <tag>传值</tag>
       </tags>
@@ -145,11 +145,11 @@
         <category>自定义转换器</category>
       </categories>
       <tags>
-        <tag>idea</tag>
         <tag>Java</tag>
-        <tag>Struts2</tag>
+        <tag>idea</tag>
         <tag>OGNL</tag>
         <tag>自定义转换器</tag>
+        <tag>Struts2</tag>
       </tags>
   </entry>
   <entry>
