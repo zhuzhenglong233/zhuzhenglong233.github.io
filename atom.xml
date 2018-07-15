@@ -51,9 +51,9 @@
     
       <category term="多对一" scheme="http://zhuzhenglong233.github.io/tags/%E5%A4%9A%E5%AF%B9%E4%B8%80/"/>
     
-      <category term="MyBatis" scheme="http://zhuzhenglong233.github.io/tags/MyBatis/"/>
-    
       <category term="MySQL" scheme="http://zhuzhenglong233.github.io/tags/MySQL/"/>
+    
+      <category term="MyBatis" scheme="http://zhuzhenglong233.github.io/tags/MyBatis/"/>
     
       <category term="一对一" scheme="http://zhuzhenglong233.github.io/tags/%E4%B8%80%E5%AF%B9%E4%B8%80/"/>
     
@@ -90,9 +90,9 @@
     
       <category term="关系映射" scheme="http://zhuzhenglong233.github.io/tags/%E5%85%B3%E7%B3%BB%E6%98%A0%E5%B0%84/"/>
     
-      <category term="MyBatis" scheme="http://zhuzhenglong233.github.io/tags/MyBatis/"/>
-    
       <category term="MySQL" scheme="http://zhuzhenglong233.github.io/tags/MySQL/"/>
+    
+      <category term="MyBatis" scheme="http://zhuzhenglong233.github.io/tags/MyBatis/"/>
     
       <category term="配置文件" scheme="http://zhuzhenglong233.github.io/tags/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/"/>
     
@@ -335,9 +335,9 @@
       <category term="自定义转换器" scheme="http://zhuzhenglong233.github.io/categories/Struts2/OGNL/%E8%87%AA%E5%AE%9A%E4%B9%89%E8%BD%AC%E6%8D%A2%E5%99%A8/"/>
     
     
-      <category term="Java" scheme="http://zhuzhenglong233.github.io/tags/Java/"/>
-    
       <category term="idea" scheme="http://zhuzhenglong233.github.io/tags/idea/"/>
+    
+      <category term="Java" scheme="http://zhuzhenglong233.github.io/tags/Java/"/>
     
       <category term="OGNL" scheme="http://zhuzhenglong233.github.io/tags/OGNL/"/>
     
