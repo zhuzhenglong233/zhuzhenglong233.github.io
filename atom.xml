@@ -234,9 +234,9 @@
     
       <category term="idea" scheme="http://zhuzhenglong233.github.io/tags/idea/"/>
     
-      <category term="OGNL" scheme="http://zhuzhenglong233.github.io/tags/OGNL/"/>
-    
       <category term="Struts2" scheme="http://zhuzhenglong233.github.io/tags/Struts2/"/>
+    
+      <category term="OGNL" scheme="http://zhuzhenglong233.github.io/tags/OGNL/"/>
     
       <category term="Action" scheme="http://zhuzhenglong233.github.io/tags/Action/"/>
     
@@ -339,11 +339,11 @@
     
       <category term="Java" scheme="http://zhuzhenglong233.github.io/tags/Java/"/>
     
+      <category term="Struts2" scheme="http://zhuzhenglong233.github.io/tags/Struts2/"/>
+    
       <category term="OGNL" scheme="http://zhuzhenglong233.github.io/tags/OGNL/"/>
     
       <category term="自定义转换器" scheme="http://zhuzhenglong233.github.io/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E8%BD%AC%E6%8D%A2%E5%99%A8/"/>
-    
-      <category term="Struts2" scheme="http://zhuzhenglong233.github.io/tags/Struts2/"/>
     
   </entry>
   
