@@ -2,6 +2,17 @@
 <search>
   <entry>
     <title><![CDATA[layer-数据表格结合图片滚轮放大缩小图片-旋转]]></title>
+    <url>%2F2020%2F05%2F25%2FMysql%20%E5%BE%AA%E7%8E%AF%E8%87%AA%E5%A2%9E%E5%A2%9E%E5%8A%A0%E6%95%B0%E6%8D%AE%2F</url>
+    <content type="text"><![CDATA[说明： Mysql 有时需要手动添加测试数据的时候可用代码实现(将插入sql替换即可使用)1234567891011121314151617181920212223## 1. 运行第一步DROP PROCEDURE IF EXISTS proc_initData;DELIMITER $CREATE PROCEDURE proc_initData()BEGIN DECLARE i INT DEFAULT 1; ## 从几开始 WHILE i&lt;=3 DO ## 创建多少次 ## 这里是sql 开始 INSERT INTO `window_manage`( `winName`, `winNo`, `winAddress`, `description`, `businessId`, `regionId`, `status`, `creator`, `createTime`, `latest`, `currentJobNum`, `currentCallTid`, `loginTime`, `loginOffTime`, `content`) VALUES ( CONCAT(i ,'窗口'), i, '04', '4', 5, 1, 0, 1, '2019-10-10 11:29:40', '2019-10-10 11:29:40', NULL, NULL, NULL, NULL, NULL); ## 这里是sql 结束 SET i = i+1; END WHILE;END $## CONCAT(i ,'窗口') i 是自增 窗口是你要拼的字符串## 1. 第二步 这里就是开始创建数据CALL proc_initData();]]></content>
+      <categories>
+        <category>MySQL</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[layer-数据表格结合图片滚轮放大缩小图片-旋转]]></title>
     <url>%2F2018%2F12%2F10%2Flayer-%E6%95%B0%E6%8D%AE%E8%A1%A8%E6%A0%BC%E7%BB%93%E5%90%88%E5%9B%BE%E7%89%87%E6%BB%9A%E8%BD%AE%E6%94%BE%E5%A4%A7%E7%BC%A9%E5%B0%8F%E5%9B%BE%E7%89%87-%E6%97%8B%E8%BD%AC%2F</url>
     <content type="text"><![CDATA[说明： layer框架导入某些图片会有方向不正确问题，未解决！12345&#123;field:'certData', title: '图片',align: 'center',templet: function (row) &#123; return '&lt;div style="height:500px"&gt;&lt;img class="certDataImgs" style="cursor:hand;" src="'+row.certData+'"&gt;&lt;/div&gt;' &#125; &#125; 控制用户鼠标滚轮实现缩放12345678function bigimg(obj)&#123; //alert(parseInt(obj.style.zoom,10)); var zoom = parseInt(obj.style.zoom,10)||100; zoom += event.wheelDelta / 25; if(zoom &gt; 0 ) obj.style.zoom=zoom+'%'; return false; &#125; 控制用户鼠标滚轮实现缩放12345var current = 0;var imgCurren = function(obj)&#123; current += 90; obj.style.transform = 'rotate('+current+'deg)';&#125;;]]></content>
       <categories>
