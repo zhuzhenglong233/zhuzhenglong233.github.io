@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Ext js 4.x 获取容器子父对象]]></title>
+    <url>%2F2020%2F05%2F25%2FExt%20js%204.x%20%E8%8E%B7%E5%8F%96%E5%AE%B9%E5%99%A8%E5%AD%90%E7%88%B6%E5%AF%B9%E8%B1%A1%2F</url>
+    <content type="text"><![CDATA[1.当前对象的父对象(上级对象)1this.ownerCt: 2.当前对象的下一个相邻的对象1this.nextSibling(); 3.当前对象的上一个相邻的对象1this.previousSibling(); 4.当前容器中的第一个子对象12this.get(0); this.items.first(); 5.当前容器的最后一个子对象1this.items.last(); 6.查找当前对象的所有上级匹配的容器1this.findParentByType(String xtype) 7.查找当前对象的所有下级匹配的组件1this.findByType(String xtype)]]></content>
+      <categories>
+        <category>EXT</category>
+        <category>JS</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+        <tag>EXT</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Mysql 循环自增增加数据]]></title>
     <url>%2F2020%2F05%2F25%2FMysql%20%E5%BE%AA%E7%8E%AF%E8%87%AA%E5%A2%9E%E5%A2%9E%E5%8A%A0%E6%95%B0%E6%8D%AE%2F</url>
-    <content type="text"><![CDATA[说明： Mysql 有时需要手动添加测试数据的时候可用代码实现(将插入sql替换即可使用)1234567891011121314151617181920212223## 1. 运行第一步DROP PROCEDURE IF EXISTS proc_initData;DELIMITER $CREATE PROCEDURE proc_initData()BEGIN DECLARE i INT DEFAULT 1; ## 从几开始 WHILE i&lt;=3 DO ## 创建多少次 ## 这里是sql 开始 INSERT INTO `window_manage`( `winName`, `winNo`, `winAddress`, `description`, `businessId`, `regionId`, `status`, `creator`, `createTime`, `latest`, `currentJobNum`, `currentCallTid`, `loginTime`, `loginOffTime`, `content`) VALUES ( CONCAT(i ,'窗口'), i, '04', '4', 5, 1, 0, 1, '2019-10-10 11:29:40', '2019-10-10 11:29:40', NULL, NULL, NULL, NULL, NULL); ## 这里是sql 结束 SET i = i+1; END WHILE;END $## CONCAT(i ,'窗口') i 是自增 窗口是你要拼的字符串## 1. 第二步 这里就是开始创建数据CALL proc_initData();]]></content>
+    <content type="text"><![CDATA[说明： Mysql 有时需要手动添加测试数据的时候可用代码实现(将插入sql替换即可使用)1234567891011121314151617181920212223242526## 1. 运行第一步DROP PROCEDURE IF EXISTS proc_initData;DELIMITER $CREATE PROCEDURE proc_initData()BEGIN DECLARE i INT DEFAULT 1; ## 从几开始 WHILE i&lt;=3 DO ## 创建多少次 ## 这里是sql 开始 INSERT INTO `window_manage`( `winName`, `winNo`, `winAddress`, `description`, `businessId`, `regionId`, `status`, `creator`, `createTime`, `latest`, `currentJobNum`, `currentCallTid`, `loginTime`, `loginOffTime`, `content`) VALUES ( CONCAT(i ,'窗口'), i, '04', '4', 5, 1, 0, 1, '2019-10-10 11:29:40', '2019-10-10 11:29:40', NULL, NULL, NULL, NULL, NULL); ## 这里是sql 结束 SET i = i+1; END WHILE;END $## CONCAT(i ,'窗口') i 是自增 窗口是你要拼的字符串## 2. 第二步 这里就是开始创建数据CALL proc_initData();]]></content>
       <categories>
         <category>MySQL</category>
       </categories>
