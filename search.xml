@@ -26,8 +26,8 @@
         <category>SHA-1</category>
       </categories>
       <tags>
-        <tag>JS</tag>
         <tag>Java</tag>
+        <tag>JS</tag>
         <tag>Wechat</tag>
         <tag>SHA-1</tag>
       </tags>
@@ -41,8 +41,8 @@
         <category>JS</category>
       </categories>
       <tags>
-        <tag>EXT</tag>
         <tag>JS</tag>
+        <tag>EXT</tag>
       </tags>
   </entry>
   <entry>
@@ -233,9 +233,9 @@
         <category>关系映射</category>
       </categories>
       <tags>
+        <tag>Hibernate</tag>
         <tag>idea</tag>
         <tag>Oracle</tag>
-        <tag>Hibernate</tag>
         <tag>多对多</tag>
         <tag>一对多</tag>
         <tag>多对一</tag>
@@ -331,8 +331,8 @@
         <category>自定义转换器</category>
       </categories>
       <tags>
-        <tag>idea</tag>
         <tag>Java</tag>
+        <tag>idea</tag>
         <tag>OGNL</tag>
         <tag>自定义转换器</tag>
         <tag>Struts2</tag>
